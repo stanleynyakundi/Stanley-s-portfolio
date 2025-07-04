@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stanley's Blog</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: #e3fafc;
+        color: #333;
+      }
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: none;
+        display: flex;
+        gap: 2rem;
+        padding: 1rem 2rem;
+        z-index: 1000;
+        transition: background 0.3s ease;
+      }
+
+      nav a {
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: #00bcd4;
+      }
+      .blog-section {
+        padding: 4rem 2rem;
+      }
+
+      .blog-container {
+        max-width: 1200px;
+        margin: auto;
+        text-align: center;
+      }
+
+      .blog-container h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: #004d61;
+      }
+
+      .intro-text {
+        font-size: 1.1rem;
+        margin-bottom: 3rem;
+        color: #555;
+      }
+
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .blog-card {
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      .blog-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .blog-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .blog-content {
+        padding: 1.5rem;
+        text-align: left;
+      }
+
+      .blog-content h3 {
+        margin: 0 0 0.8rem 0;
+        font-size: 1.2rem;
+        color: #007c91;
+      }
+
+      .blog-content p {
+        font-size: 1rem;
+        color: #666;
+        margin-bottom: 1rem;
+      }
+
+      .blog-content a {
+        text-decoration: none;
+        color: #00bcd4;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .blog-content a:hover {
+        color: #0097a7;
+      }
+    </style>
+  </head>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="blogs.html">Blog</a>
+    <a href="Documents.html">Documents</a>
+  </nav>
+  <body>
+    <section class="blog-section">
+      <div class="blog-container">
+        <h2>My Blog</h2>
+        <p class="intro-text">
+          Dive into thoughts, tutorials, and stories across engineering, code,
+          AI, design, and everyday life.
+        </p>
+
+        <div class="blog-grid">
+          <!-- Blog Post Card -->
+          <div class="blog-card">
+            <img src="/images/civil.jpg" alt="Civil Engineering" />
+            <div class="blog-content">
+              <h3>Understanding Structural Loads</h3>
+              <p>
+                An exploration of how loads are calculated and applied in
+                real-world structural projects.
+              </p>
+              <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="blog-card">
+            <img src="/images/js.jpg" alt="Web Development" />
+            <div class="blog-content">
+              <h3>Mastering JavaScript Basics</h3>
+              <p>
+                Essential JS principles for building responsive and interactive
+                websites.
+              </p>
+              <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="blog-card">
+            <img src="/images/AI 2.jpeg" alt="AI Tools" />
+            <div class="blog-content">
+              <h3>Boosting Productivity with AI</h3>
+              <p>
+                Using ChatGPT, DeepSeek, and generative AI tools to automate
+                tasks and enhance workflows.
+              </p>
+              <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="blog-card">
+            <img src="/images/Donghua.jpeg" alt="Lifestyle" />
+            <div class="blog-content">
+              <h3>What Makes Donghua Unique?</h3>
+              <p>
+                A look into Chinese animation, its style, storytelling, and
+                cultural themes.
+              </p>
+              <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="blog-card">
+            <img src="/images/mount.jpeg" alt="Travel" />
+            <div class="blog-content">
+              <h3>My Journey to Mount Elgon</h3>
+              <p>
+                A memorable hike exploring Kenya’s highland treasures and the
+                beauty of nature.
+              </p>
+              <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
