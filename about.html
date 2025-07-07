@@ -9,69 +9,87 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <style>
+      :root {
+        --primary-color: #00bcd4;
+        --text-color: #333;
+        --header-color: #004d61;
+        --section-title-color: #007c91;
+        --background-color: #e3fafc;
+        --font-main: "Segoe UI", sans-serif;
+      }
+
       body {
         margin: 0;
         padding: 0;
-        font-family: "Segoe UI", sans-serif;
-        background: #e3fafc;
-        color: #333;
+        font-family: var(--font-main);
+        background: var(--background-color);
+        color: var(--text-color);
       }
+
       nav {
         position: fixed;
         top: 0;
         width: 100%;
-        background: none;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(8px);
         display: flex;
-        gap: 2rem;
+        flex-wrap: wrap;
+        gap: 1.5rem;
         padding: 1rem 2rem;
         z-index: 1000;
-        transition: background 0.3s ease;
+        justify-content: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
       }
 
       nav a {
         text-decoration: none;
         font-weight: 500;
+        color: var(--text-color);
         transition: color 0.3s ease;
       }
 
       nav a:hover {
-        color: #00bcd4;
+        color: var(--primary-color);
+      }
+
+      main {
+        padding-top: 5rem; /* account for fixed nav */
       }
 
       .about-detailed {
-        padding: 4rem 2rem;
+        padding: 4rem 1.5rem;
       }
 
       .about-container {
-        max-width: 1100px;
+        max-width: 1200px;
         margin: auto;
       }
 
       .about-container h2 {
         text-align: center;
-        font-size: 2rem;
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
         margin-bottom: 2rem;
-        color: #004d61;
+        color: var(--header-color);
       }
 
-      .about-container p {
+      .about-container > p {
         text-align: center;
-        max-width: 800px;
-        margin: 0 auto 3rem auto;
+        max-width: 850px;
+        margin: 0 auto 2.5rem;
         font-size: 1.1rem;
-        line-height: 1.6;
+        line-height: 1.7;
       }
 
       .about-columns {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 2rem;
       }
 
       .about-section h3 {
-        font-size: 1.25rem;
+        font-size: 1.3rem;
         margin-bottom: 1rem;
-        color: #007c91;
+        color: var(--section-title-color);
       }
 
       .about-section ul {
@@ -81,26 +99,35 @@
       }
 
       .about-section ul li {
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.8rem;
         padding-left: 1.5rem;
         position: relative;
-        line-height: 1.4;
+        font-size: 1rem;
+        line-height: 1.5;
       }
 
       .about-section ul li::before {
         content: "•";
         position: absolute;
         left: 0;
-        color: #00bcd4;
+        color: var(--primary-color);
+        font-size: 1.2rem;
+        top: 0;
+        line-height: 1;
       }
 
-      @media screen and (max-width: 600px) {
-        .about-container p {
-          font-size: 1rem;
+      @media (max-width: 600px) {
+        nav {
+          padding: 0.75rem 1rem;
+          gap: 1rem;
+        }
+
+        .about-detailed {
+          padding: 3rem 1rem;
         }
 
         .about-section h3 {
-          font-size: 1.1rem;
+          font-size: 1.15rem;
         }
 
         .about-section ul li {
@@ -109,114 +136,138 @@
       }
     </style>
   </head>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="blogs.html">Blog</a>
-    <a href="Documents.html">Documents</a>
-  </nav>
   <body>
-    <section id="about-page" class="about-detailed">
-      <div class="about-container">
-        <h2>About Me</h2>
-        <p>
-         <p>
-  Hello! I’m <strong>Stanley Rodney Nyakundi</strong>, a multidisciplinary creator and solutions-driven thinker. I hold a 
-  <strong>Bachelor’s degree in Civil and Structural Engineering</strong> from the <strong>University of Eldoret, Kenya</strong>, 
-  where I built a solid foundation in design, analysis, and problem-solving through real-world engineering challenges.
-</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="blogs.html">Blog</a>
+      <a href="Documents.html">Documents</a>
+    </nav>
 
-<p>
-  In addition to my engineering background, I have developed strong capabilities in <strong>front-end web development</strong>, 
-  with hands-on experience in <strong>HTML, CSS, and JavaScript</strong>, allowing me to create responsive, user-centered web applications. 
-  My design sensibilities are further enhanced through my understanding of UI/UX principles and tools like Figma.
-</p>
+    <main>
+      <section id="about-page" class="about-detailed">
+        <div class="about-container">
+          <h2>About Me</h2>
 
-<p>
-  I am also an avid practitioner of <strong>AI tool integration</strong>, leveraging platforms such as <strong>ChatGPT, DeepSeek</strong>, 
-  and other generative AI systems for productivity, automation, research, and creative problem-solving. 
-  These technologies allow me to bridge complex ideas with innovative digital solutions.
-</p>
+          <p>
+            Hello! I’m <strong>Stanley Rodney Nyakundi</strong>, a
+            multidisciplinary creator and solutions-driven thinker. I hold a
+            <strong
+              >Bachelor’s degree in Civil and Structural Engineering</strong
+            >
+            from the <strong>University of Eldoret, Kenya</strong>, where I
+            built a solid foundation in design, analysis, and problem-solving
+            through real-world engineering challenges.
+          </p>
 
-<p>
-  While I maintain a keen interest in the financial world and occasionally explore <strong>currency trading</strong>, my true focus lies in combining 
-  technical knowledge with creativity to build impactful systems and experiences that align with modern digital evolution.
-</p>
+          <p>
+            In addition to my engineering background, I have developed strong
+            capabilities in
+            <strong>front-end web development</strong>, with hands-on experience
+            in <strong>HTML, CSS, and JavaScript</strong>, allowing me to create
+            responsive, user-centered web applications. My design sensibilities
+            are further enhanced through my understanding of UI/UX principles
+            and tools like Figma.
+          </p>
 
-        </p>
+          <p>
+            I am also an avid practitioner of
+            <strong>AI tool integration</strong>, leveraging platforms such as
+            <strong>ChatGPT, DeepSeek</strong>, and other generative AI systems
+            for productivity, automation, research, and creative
+            problem-solving. These technologies allow me to bridge complex ideas
+            with innovative digital solutions.
+          </p>
 
-        <div class="about-columns">
-          <div class="about-section">
-            <h3>Core Interests</h3>
-            <ul>
-              <li>
-                🏗️ Civil Engineering: Structural design, detailing, and
-                CAD-based drafting.
-              </li>
-              <li>
-                💻 Web Development: Full-stack projects with HTML, CSS, JS, and
-                React.
-              </li>
-              <li>
-                🎨 Web & UI/UX Design: Creating engaging interfaces with Figma.
-              </li>
-              <li>
-                📈 Trading: Specializing in Forex markets (primarily USD pairs),
-                with a strong focus on strategy and journaling.
-              </li>
-              <li>
-                🧠 AI Integration: Using AI tools for creative generation,
-                automation, and research productivity.
-              </li>
-            </ul>
-          </div>
+          <p>
+            While I maintain a keen interest in the financial world and
+            occasionally explore
+            <strong>currency trading</strong>, my true focus lies in combining
+            technical knowledge with creativity to build impactful systems and
+            experiences that align with modern digital evolution.
+          </p>
 
-          <div class="about-section">
-            <h3>Hobbies</h3>
-            <ul>
-              <li>
-                🎮 Playing video games (strategy, story-rich, and competitive
-                titles)
-              </li>
-              <li>
-                🎬 Watching Chinese dramas and Donghua (Chinese animations)
-              </li>
-              <li>🖌️ Drawing and exploring various forms of visual art</li>
-              <li>✈️ Traveling to new places and experiencing new cultures</li>
-            </ul>
-          </div>
+          <div class="about-columns">
+            <div class="about-section">
+              <h3>Core Interests</h3>
+              <ul>
+                <li>
+                  🏗️ Civil Engineering: Structural design, detailing, and
+                  CAD-based drafting.
+                </li>
+                <li>
+                  💻 Web Development: Full-stack projects with HTML, CSS, JS,
+                  and React.
+                </li>
+                <li>
+                  🎨 Web & UI/UX Design: Creating engaging interfaces with
+                  Figma.
+                </li>
+                <li>
+                  📈 Trading: Specializing in Forex markets (primarily USD
+                  pairs), with a strong focus on strategy and journaling.
+                </li>
+                <li>
+                  🧠 AI Integration: Using AI tools for creative generation,
+                  automation, and research productivity.
+                </li>
+              </ul>
+            </div>
 
-          <div class="about-section">
-            <h3>Life Goals & Values</h3>
-            <ul>
-              <li>💰 Financial independence and sustainable wealth-building</li>
-              <li>
-                🌱 Lifelong learning through technology, finance, and design
-              </li>
-              <li>
-                🌍 Exploring the world while building meaningful relationships
-              </li>
-              <li>
-                📚 Teaching, mentoring, and giving back through skill sharing
-              </li>
-            </ul>
-          </div>
+            <div class="about-section">
+              <h3>Hobbies</h3>
+              <ul>
+                <li>
+                  🎮 Playing video games (strategy, story-rich, and competitive
+                  titles)
+                </li>
+                <li>
+                  🎬 Watching Chinese dramas and Donghua (Chinese animations)
+                </li>
+                <li>🖌️ Drawing and exploring various forms of visual art</li>
+                <li>
+                  ✈️ Traveling to new places and experiencing new cultures
+                </li>
+              </ul>
+            </div>
 
-          <div class="about-section">
-            <h3>Additional Traits</h3>
-            <ul>
-              <li>🧩 Detail-oriented with strong analytical thinking</li>
-              <li>
-                🧠 Creative problem solver with structured workflow habits
-              </li>
-              <li>
-                🚀 Self-motivated and adaptive in fast-changing environments
-              </li>
-              <li>🔗 Passionate about connecting ideas, people, and systems</li>
-            </ul>
+            <div class="about-section">
+              <h3>Life Goals & Values</h3>
+              <ul>
+                <li>
+                  💰 Financial independence and sustainable wealth-building
+                </li>
+                <li>
+                  🌱 Lifelong learning through technology, finance, and design
+                </li>
+                <li>
+                  🌍 Exploring the world while building meaningful relationships
+                </li>
+                <li>
+                  📚 Teaching, mentoring, and giving back through skill sharing
+                </li>
+              </ul>
+            </div>
+
+            <div class="about-section">
+              <h3>Additional Traits</h3>
+              <ul>
+                <li>🧩 Detail-oriented with strong analytical thinking</li>
+                <li>
+                  🧠 Creative problem solver with structured workflow habits
+                </li>
+                <li>
+                  🚀 Self-motivated and adaptive in fast-changing environments
+                </li>
+                <li>
+                  🔗 Passionate about connecting ideas, people, and systems
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   </body>
 </html>
+
