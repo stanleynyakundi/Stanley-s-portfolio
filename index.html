@@ -4,337 +4,664 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stanley's Portfolio</title>
-    <script
-      src="https://kit.fontawesome.com/a076d05399.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            colors: {
+              primary: "#06b6d4",
+              secondary: "#1e293b",
+              accent: "#0ea5e9",
+              dark: "#0f172a",
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .section-title {
+          @apply text-3xl md:text-4xl font-bold mb-8 text-center text-dark relative;
+        }
+        .section-title:after {
+          @apply content-[''] block w-16 h-1 bg-primary mx-auto mt-4;
+        }
+        .nav-scrolled {
+          @apply bg-white shadow-md;
+        }
+        .nav-scrolled a {
+          @apply text-dark;
+        }
+        .nav-scrolled .mobile-menu {
+          @apply text-dark;
+        }
+      }
+    </style>
   </head>
-  <body>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="blogs.html">Blog</a>
-      <a href="Documents.html">Documents</a>
-    </nav>
-    <header class="hero" id="hero">
-      <div class="hero-content">
-        <h1>Engineer. Developer. Trader. AI Expert</h1>
-        <p>
-          A dedicated and results-driven Civil Engineering graduate with a
-          strong foundation in architectural design, structural detailing, and
-          web development. Possesses excellent computer literacy and a keen eye
-          for detail, complemented by creative problem-solving abilities.
-        </p>
-        <a href="#contact" class="cta-button">Let's Connect</a>
-      </div>
-      <div class="hero-image">
-        <img src="images/profile pic.jpg" alt="Nano Profile" />
-      </div>
-    </header>
-    <section id="about">
-      <h2 class="section-title">About Me</h2>
-      <div class="about-grid">
-        <div class="about-item">
-          <i class="fas fa-drafting-compass"></i>
-          <h3>Civil Engineer</h3>
-          <p>
-            Trained in infrastructure planning, structural analysis, and
-            detailed design using tools like AutoCAD and Revit.
-          </p>
-        </div>
-        <div class="about-item">
-          <i class="fas fa-laptop-code"></i>
-          <h3>Web Developer</h3>
-          <p>
-            Experienced in building responsive, user-friendly websites and
-            applications using HTML, CSS, JavaScript, and modern frameworks.
-          </p>
-        </div>
+  <body class="font-sans bg-gray-50 text-gray-700">
+    <!-- Navigation -->
+    <nav
+      id="navbar"
+      class="fixed w-full z-50 transition-all duration-300 py-4 px-6"
+    >
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="index.html" class="text-white text-xl font-bold">Stanley</a>
 
-        <div class="about-item">
-          <i class="fas fa-brain"></i>
-          <h3>AI Expert</h3>
-          <p>
-            Knowledgeable in AI tools and applications including AI development
-            and design, chat-based automation, and AI research platforms.
-          </p>
-        </div>
-      </div>
-    </section>
-    <section id="civil">
-      <h2 class="section-title">Civil Engineering</h2>
-      <div class="project-grid">
-        <div class="project-item">
-          <img src="/images/Autocad.jpeg" alt="AutoCAD Design" />
-          <h3>AutoCAD Designs</h3>
-          <p>
-            Detailed architectural and structural drafts including floor plans,
-            elevation views, and site layouts.
-          </p>
-          <a href="#">View AutoCAD Projects</a>
-        </div>
-        <div class="project-item">
-          <img src="/images/Archicard.jpeg" alt="Archicad Models" />
-          <h3>Archicad Models</h3>
-          <p>
-            3D modeling for residential and commercial buildings, showcasing
-            spatial design and volumetric clarity.
-          </p>
-          <a href="#">View Archicad Models</a>
-        </div>
-        <div class="project-item">
-          <img src="/images/Revit.jpeg" alt="Revit BIM Projects" />
-          <h3>Revit BIM</h3>
-          <p>
-            Integrated building information models with material schedules,
-            structural elements, and MEP coordination.
-          </p>
-          <a href="#">View Revit BIM Projects</a>
-        </div>
-        <div class="project-item">
-          <img
-            src="https://images.unsplash.com/photo-1570129477492-45c003edd2be"
-            alt="Structural Construction"
-          />
-          <h3>Structural Construction</h3>
-          <p>
-            Execution and detailing of concrete and steel structures, with
-            foundation and load-bearing analysis.
-          </p>
-          <a href="#">View Structural Projects</a>
-        </div>
-      </div>
-    </section>
-    <section id="webdev">
-      <h2 class="section-title">Web Development & Design</h2>
-      <div class="project-grid">
-        <div class="project-item">
-          <img src="/images/programming.jpg" alt="HTML CSS JS" />
-          <h3>Front-End Projects</h3>
-          <p>
-            Crafted responsive web experiences using HTML, CSS, and JavaScript.
-            Built multi-page websites and single-page applications.
-          </p>
-          <a href="#">View Front-End Projects</a><br />
-          <a href="https://github.com/yourusername" target="_blank"
-            >GitHub Repository</a
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex space-x-8">
+          <a href="index.html" class="text-white hover:text-primary transition"
+            >Home</a
+          >
+          <a href="about.html" class="text-white hover:text-primary transition"
+            >About</a
+          >
+          <a href="blogs.html" class="text-white hover:text-primary transition"
+            >Blog</a
+          >
+          <a
+            href="Documents.html"
+            class="text-white hover:text-primary transition"
+            >Documents</a
           >
         </div>
-        <div class="project-item">
-          <img
-            src="https://images.unsplash.com/photo-1605379399642-870262d3d051"
-            alt="UI/UX Figma Design"
-          />
-          <h3>UI/UX Design</h3>
-          <p>
-            Designed intuitive interfaces and wireframes in Figma. Focused on
-            usability and visual clarity for digital products.
-          </p>
-          <a href="#">View Figma Designs</a>
-        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-button" class="md:hidden text-white text-2xl">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
-    </section>
-    <section id="ai" class="ai-section">
-      <h2 class="section-title ai-title">AI Integration & Expertise</h2>
-      <div class="ai-grid">
-        <div class="ai-item">
-          <i class="fas fa-brain ai-icon"></i>
-          <h3 class="ai-heading">AI in Design</h3>
-          <p>
-            Utilizes AI platforms like Midjourney, DALL·E, and Adobe Firefly to
-            generate UI components, graphic assets, and visual themes that align
-            with brand identity and creative needs.
-          </p>
-        </div>
-        <div class="ai-item">
-          <i class="fas fa-code ai-icon"></i>
-          <h3 class="ai-heading">AI in Development</h3>
-          <p>
-            Leverages AI coding assistants like GitHub Copilot and Tabnine for
-            rapid prototyping, debugging, and efficient implementation of
-            JavaScript, Python, and HTML/CSS features.
-          </p>
-        </div>
-        <div class="ai-item">
-          <i class="fas fa-search ai-icon"></i>
-          <h3 class="ai-heading">AI for Research</h3>
-          <p>
-            Uses AI-powered tools for data analysis, research automation,
-            language modeling, and content summarization across civil, design,
-            and trading disciplines.
-          </p>
-        </div>
-        <div class="ai-item">
-          <i class="fas fa-lightbulb ai-icon"></i>
-          <h3 class="ai-heading">Problem Solving</h3>
-          <p>
-            Applies AI decision engines, generative models, and logic assistants
-            to break down complex problems, simulate outcomes, and offer optimal
-            solutions in multi-domain tasks.
-          </p>
-        </div>
-      </div>
-    </section>
-    <section
-      id="testimonials"
-      style="background: #f0f4f8; padding: 4rem 2rem; text-align: center"
-    >
-      <h2 class="section-title" style="color: #1e1e2f">What People Say</h2>
+
+      <!-- Mobile Menu -->
       <div
-        style="
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 2rem;
-          max-width: 1200px;
-          margin: auto;
-        "
+        id="mobile-menu"
+        class="hidden md:hidden bg-white shadow-lg rounded-lg mt-2 py-2 absolute right-6 left-6"
+      >
+        <a href="index.html" class="block px-4 py-2 text-dark hover:bg-gray-100"
+          >Home</a
+        >
+        <a href="about.html" class="block px-4 py-2 text-dark hover:bg-gray-100"
+          >About</a
+        >
+        <a href="blogs.html" class="block px-4 py-2 text-dark hover:bg-gray-100"
+          >Blog</a
+        >
+        <a
+          href="Documents.html"
+          class="block px-4 py-2 text-dark hover:bg-gray-100"
+          >Documents</a
+        >
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header
+      class="relative min-h-screen flex items-center justify-center text-white overflow-hidden"
+    >
+      <!-- Background Layer -->
+      <div
+        class="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+        style="background-image: url('images/hero image.jpg')"
       >
         <div
-          style="
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-          "
-        >
-          <p style="font-style: italic; color: #555">
-            “Nano’s ability to merge creativity with technical skill is
-            unmatched. He brought our project to life with precision and style.”
+          class="w-full h-full bg-gradient-to-r from-dark/90 via-dark/70 to-gray-800/80"
+        ></div>
+      </div>
+
+      <!-- Content Layer -->
+      <div
+        class="relative z-10 max-w-7xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-12"
+      >
+        <div class="md:w-1/2">
+          <h1
+            class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white"
+          >
+            Engineer. Developer. Trader. AI Expert
+          </h1>
+          <p class="text-lg md:text-xl mb-8 leading-relaxed text-white">
+            A dedicated and results-driven Civil Engineering graduate with a
+            strong foundation in architectural design, structural detailing, and
+            web development. Possesses excellent computer literacy and a keen
+            eye for detail, complemented by creative problem-solving abilities.
           </p>
-          <h4 style="margin-top: 1rem; font-weight: 700; color: #333">
-            — Aisha Mburu, Architect
-          </h4>
+          <a
+            href="#contact"
+            class="inline-block bg-primary hover:bg-accent text-white font-medium py-3 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-white/50"
+          >
+            Let's Connect
+          </a>
         </div>
-        <div
-          style="
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-          "
-        >
-          <p style="font-style: italic; color: #555">
-            “His structural designs are both practical and elegant. We were
-            impressed by his detail-oriented work ethic.”
-          </p>
-          <h4 style="margin-top: 1rem; font-weight: 700; color: #333">
-            — David Otieno, Civil Works Engineer
-          </h4>
+        <div class="md:w-1/2 flex justify-center">
+          <img
+            src="images/profile pic.jpg"
+            alt="Stanley's Profile"
+            class="rounded-2xl shadow-xl w-full max-w-md border-4 border-white/20"
+          />
         </div>
-        <div
-          style="
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-          "
-        >
-          <p style="font-style: italic; color: #555">
-            “The websites Nano created exceeded expectations — user-friendly,
-            visually appealing, and built with best practices in mind.”
-          </p>
-          <h4 style="margin-top: 1rem; font-weight: 700; color: #333">
-            — Faith Kimani, UX Designer
-          </h4>
+      </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 px-6">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="section-title">About Me</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Civil Engineer -->
+          <div
+            class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 text-center"
+          >
+            <div class="text-primary text-4xl mb-4">
+              <i class="fas fa-drafting-compass"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Civil Engineer</h3>
+            <p class="text-gray-600">
+              Trained in infrastructure planning, structural analysis, and
+              detailed design using tools like AutoCAD and Revit.
+            </p>
+          </div>
+
+          <!-- Web Developer -->
+          <div
+            class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 text-center"
+          >
+            <div class="text-primary text-4xl mb-4">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Web Developer</h3>
+            <p class="text-gray-600">
+              Experienced in building responsive, user-friendly websites and
+              applications using HTML, CSS, JavaScript, and modern frameworks.
+            </p>
+          </div>
+
+          <!-- AI Expert -->
+          <div
+            class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 text-center"
+          >
+            <div class="text-primary text-4xl mb-4">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">AI Expert</h3>
+            <p class="text-gray-600">
+              Knowledgeable in AI tools and applications including AI
+              development and design, chat-based automation, and AI research
+              platforms.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <div class="connect">
-      <section id="contact">
-        <h2 class="section-title">Let's Connect</h2>
-        <form
-          action="mailto:youremail@example.com"
-          method="POST"
-          enctype="text/plain"
-        >
-          <input type="text" placeholder="Your Name" name="name" required />
-          <input type="email" placeholder="Your Email" name="email" required />
-          <textarea
-            rows="5"
-            placeholder="Your Message"
-            name="message"
-            required
-          ></textarea>
-          <button type="submit">Send Message</button>
-        </form>
-        <div class="social-icons">
-          <a
-            href="https://www.linkedin.com/in/stanley-nyakundi-45296030b/"
-            target="_blank"
-            ><i class="fab fa-linkedin"></i
-          ></a>
-          <a href="mailto:stanleynyakundi8@gmail.com"
-            ><i class="fas fa-envelope"></i
-          ></a>
-          <a href="https://github.com/stanleynyakundi" target="_blank"
-            ><i class="fab fa-github"></i
-          ></a>
-        </div>
-      </section>
+    <!-- Civil Engineering Projects -->
+    <section id="civil" class="py-16 px-6 bg-gray-100">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="section-title">Civil Engineering</h2>
 
-      <footer class="site-footer">
-        <div class="footer-branding">
-          <img src="/images/profile pic.jpg" alt="Stanley's Profile" />
-          <p>
-            <strong>Stanley's Portfolio</strong> — Bridging Civil Engineering,
-            Web Innovation, and Market Insight.
-          </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- AutoCAD Designs -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
+          >
+            <img
+              src="/images/Autocad.jpeg"
+              alt="AutoCAD Design"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">AutoCAD Designs</h3>
+              <p class="text-gray-600 mb-4">
+                Detailed architectural and structural drafts including floor
+                plans, elevation views, and site layouts.
+              </p>
+              <a href="#" class="text-primary font-medium hover:underline"
+                >View AutoCAD Projects</a
+              >
+            </div>
+          </div>
+
+          <!-- Archicad Models -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
+          >
+            <img
+              src="/images/Archicard.jpeg"
+              alt="Archicad Models"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Archicad Models</h3>
+              <p class="text-gray-600 mb-4">
+                3D modeling for residential and commercial buildings, showcasing
+                spatial design and volumetric clarity.
+              </p>
+              <a href="#" class="text-primary font-medium hover:underline"
+                >View Archicad Models</a
+              >
+            </div>
+          </div>
+
+          <!-- Revit BIM -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
+          >
+            <img
+              src="/images/Revit.jpeg"
+              alt="Revit BIM Projects"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Revit BIM</h3>
+              <p class="text-gray-600 mb-4">
+                Integrated building information models with material schedules,
+                structural elements, and MEP coordination.
+              </p>
+              <a href="#" class="text-primary font-medium hover:underline"
+                >View Revit BIM Projects</a
+              >
+            </div>
+          </div>
+
+          <!-- Structural Construction -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1570129477492-45c003edd2be"
+              alt="Structural Construction"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Structural Construction</h3>
+              <p class="text-gray-600 mb-4">
+                Execution and detailing of concrete and steel structures, with
+                foundation and load-bearing analysis.
+              </p>
+              <a href="#" class="text-primary font-medium hover:underline"
+                >View Structural Projects</a
+              >
+            </div>
+          </div>
         </div>
-        <div class="footer-links">
-          <a href="tel:+254790465548"
-            ><i class="fas fa-phone"></i> +254790465548</a
+      </div>
+    </section>
+
+    <!-- Web Development Projects -->
+    <section id="webdev" class="py-16 px-6 bg-secondary text-white">
+      <div class="max-w-7xl mx-auto">
+        <h2
+          class="text-3xl md:text-4xl font-bold mb-8 text-center text-white relative"
+        >
+          Web Development & Design
+          <span class="block w-16 h-1 bg-primary mx-auto mt-4"></span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Front-End Projects -->
+          <div
+            class="bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
           >
-          <a href="mailto:stanleynyakundi8@gmail.com"
-            ><i class="fas fa-envelope"></i> email</a
+            <img
+              src="/images/programming.jpg"
+              alt="HTML CSS JS"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Front-End Projects</h3>
+              <p class="text-gray-300 mb-4">
+                Crafted responsive web experiences using HTML, CSS, and
+                JavaScript. Built multi-page websites and single-page
+                applications.
+              </p>
+              <div class="flex flex-col space-y-2">
+                <a href="#" class="text-primary font-medium hover:underline"
+                  >View Front-End Projects</a
+                >
+                <a
+                  href="https://github.com/yourusername"
+                  target="_blank"
+                  class="text-primary font-medium hover:underline"
+                  >GitHub Repository</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- UI/UX Design -->
+          <div
+            class="bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
           >
-          <a
-            href="https://www.linkedin.com/in/stanley-nyakundi-45296030b/"
-            target="_blank"
-            ><i class="fab fa-linkedin"></i> LinkedIn</a
-          >
-          <a href="https://github.com/stanleynyakundi" target="_blank"
-            ><i class="fab fa-github"></i> GitHub</a
-          >
-          <a href="https://instagram.com/stan.ai.dev" target="_blank"
-            ><i class="fab fa-instagram"></i> Instagram</a
-          >
-          <a href="https://twitter.com/@StanleyNya51090" target="_blank"
-            ><i class="fab fa-twitter"></i> Twitter</a
-          >
-          <a href="https://wa.me/+254790465548" target="_blank"
-            ><i class="fab fa-whatsapp"></i> WhatsApp</a
-          >
+            <img
+              src="https://images.unsplash.com/photo-1605379399642-870262d3d051"
+              alt="UI/UX Figma Design"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">UI/UX Design</h3>
+              <p class="text-gray-300 mb-4">
+                Designed intuitive interfaces and wireframes in Figma. Focused
+                on usability and visual clarity for digital products.
+              </p>
+              <a href="#" class="text-primary font-medium hover:underline"
+                >View Figma Designs</a
+              >
+            </div>
+          </div>
         </div>
-      </footer>
+      </div>
+    </section>
+
+    <!-- AI Expertise -->
+    <section id="ai" class="py-16 px-6 bg-dark text-white">
+      <div class="max-w-7xl mx-auto">
+        <h2
+          class="text-3xl md:text-4xl font-bold mb-8 text-center text-accent relative"
+        >
+          AI Integration & Expertise
+          <span class="block w-16 h-1 bg-primary mx-auto mt-4"></span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- AI in Design -->
+          <div
+            class="bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 text-center"
+          >
+            <div class="text-primary text-4xl mb-4">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">AI in Design</h3>
+            <p class="text-gray-300">
+              Utilizes AI platforms like Midjourney, DALL·E, and Adobe Firefly
+              to generate UI components, graphic assets, and visual themes that
+              align with brand identity and creative needs.
+            </p>
+          </div>
+
+          <!-- AI in Development -->
+          <div
+            class="bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 text-center"
+          >
+            <div class="text-primary text-4xl mb-4">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">AI in Development</h3>
+            <p class="text-gray-300">
+              Leverages AI coding assistants like GitHub Copilot and Tabnine for
+              rapid prototyping, debugging, and efficient implementation of
+              JavaScript, Python, and HTML/CSS features.
+            </p>
+          </div>
+
+          <!-- AI for Research -->
+          <div
+            class="bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 text-center"
+          >
+            <div class="text-primary text-4xl mb-4">
+              <i class="fas fa-search"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">AI for Research</h3>
+            <p class="text-gray-300">
+              Uses AI-powered tools for data analysis, research automation,
+              language modeling, and content summarization across civil, design,
+              and trading disciplines.
+            </p>
+          </div>
+
+          <!-- Problem Solving -->
+          <div
+            class="bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 text-center"
+          >
+            <div class="text-primary text-4xl mb-4">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Problem Solving</h3>
+            <p class="text-gray-300">
+              Applies AI decision engines, generative models, and logic
+              assistants to break down complex problems, simulate outcomes, and
+              offer optimal solutions in multi-domain tasks.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-16 px-6 bg-gray-100">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="section-title">What People Say</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Testimonial 1 -->
+          <div class="bg-white p-8 rounded-xl shadow-md">
+            <p class="italic text-gray-600 mb-4">
+              "Stanley's's ability to merge creativity with technical skill is
+              unmatched. He brought our project to life with precision and
+              style."
+            </p>
+            <h4 class="font-bold text-gray-800">— Aisha Mburu, Architect</h4>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="bg-white p-8 rounded-xl shadow-md">
+            <p class="italic text-gray-600 mb-4">
+              "His structural designs are both practical and elegant. We were
+              impressed by his detail-oriented work ethic."
+            </p>
+            <h4 class="font-bold text-gray-800">
+              — David Otieno, Civil Works Engineer
+            </h4>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="bg-white p-8 rounded-xl shadow-md">
+            <p class="italic text-gray-600 mb-4">
+              "The websites stanley created exceeded expectations —
+              user-friendly, visually appealing, and built with best practices
+              in mind."
+            </p>
+            <h4 class="font-bold text-gray-800">— Faith Kimani, UX Designer</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <div class="max-w-7xl mx-auto px-6 py-12">
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Contact Form -->
+        <section
+          id="contact"
+          class="lg:w-1/2 bg-white p-8 rounded-xl shadow-md"
+        >
+          <h2 class="section-title">Let's Connect</h2>
+
+          <form
+            action="mailto:stanleynyakundi8@gmail.com"
+            method="POST"
+            enctype="text/plain"
+            class="space-y-4"
+          >
+            <div>
+              <input
+                type="text"
+                placeholder="Your Name"
+                name="name"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            </div>
+
+            <div>
+              <input
+                type="email"
+                placeholder="Your Email"
+                name="email"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            </div>
+
+            <div>
+              <textarea
+                rows="5"
+                placeholder="Your Message"
+                name="message"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-primary hover:bg-accent text-white font-medium py-3 px-6 rounded-lg transition duration-300"
+            >
+              Send Message
+            </button>
+          </form>
+
+          <div class="flex justify-center space-x-6 mt-6">
+            <a
+              href="https://www.linkedin.com/in/stanley-nyakundi-45296030b/"
+              target="_blank"
+              class="text-gray-700 hover:text-primary text-2xl transition"
+            >
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a
+              href="mailto:stanleynyakundi8@gmail.com"
+              class="text-gray-700 hover:text-primary text-2xl transition"
+            >
+              <i class="fas fa-envelope"></i>
+            </a>
+            <a
+              href="https://github.com/stanleynyakundi"
+              target="_blank"
+              class="text-gray-700 hover:text-primary text-2xl transition"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="lg:w-1/2 bg-dark text-white p-8 rounded-xl shadow-md">
+          <div class="flex items-center gap-4 mb-6">
+            <img
+              src="/images/profile pic.jpg"
+              alt="Stanley's Profile"
+              class="w-12 h-12 rounded-full"
+            />
+            <p class="text-gray-300">
+              <strong class="text-white">Stanley's Portfolio</strong> — Bridging
+              Civil Engineering, Web Innovation, and Market Insight.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <a
+              href="tel:+254790465548"
+              class="flex items-center gap-2 text-gray-300 hover:text-primary transition"
+            >
+              <i class="fas fa-phone"></i> +254790465548
+            </a>
+            <a
+              href="mailto:stanleynyakundi8@gmail.com"
+              class="flex items-center gap-2 text-gray-300 hover:text-primary transition"
+            >
+              <i class="fas fa-envelope"></i> Email
+            </a>
+            <a
+              href="https://www.linkedin.com/in/stanley-nyakundi-45296030b/"
+              target="_blank"
+              class="flex items-center gap-2 text-gray-300 hover:text-primary transition"
+            >
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a
+              href="https://github.com/stanleynyakundi"
+              target="_blank"
+              class="flex items-center gap-2 text-gray-300 hover:text-primary transition"
+            >
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            <a
+              href="https://instagram.com/stan.ai.dev"
+              target="_blank"
+              class="flex items-center gap-2 text-gray-300 hover:text-primary transition"
+            >
+              <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a
+              href="https://twitter.com/@StanleyNya51090"
+              target="_blank"
+              class="flex items-center gap-2 text-gray-300 hover:text-primary transition"
+            >
+              <i class="fab fa-twitter"></i> Twitter
+            </a>
+            <a
+              href="https://wa.me/+254790465548"
+              target="_blank"
+              class="flex items-center gap-2 text-gray-300 hover:text-primary transition"
+            >
+              <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+          </div>
+        </footer>
+      </div>
     </div>
 
+    <!-- Scroll to Top Button -->
     <button
-      class="scroll-top"
-      onclick="window.scrollTo({ top: 0, behavior: 'smooth' });"
+      id="scroll-top"
+      class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full shadow-lg hidden items-center justify-center text-2xl"
     >
       ↑
     </button>
 
     <script>
+      // Mobile Menu Toggle
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Navbar Scroll Effect
+      const navbar = document.getElementById("navbar");
       window.addEventListener("scroll", () => {
-        const scrollBtn = document.querySelector(".scroll-top");
-        if (window.scrollY > 300) {
-          scrollBtn.classList.add("show");
+        if (window.scrollY > 100) {
+          navbar.classList.add("nav-scrolled");
         } else {
-          scrollBtn.classList.remove("show");
+          navbar.classList.remove("nav-scrolled");
         }
+      });
+
+      // Scroll to Top Button
+      const scrollButton = document.getElementById("scroll-top");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          scrollButton.classList.remove("hidden");
+        } else {
+          scrollButton.classList.add("hidden");
+        }
+      });
+
+      scrollButton.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       });
     </script>
   </body>
