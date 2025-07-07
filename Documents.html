@@ -4,171 +4,143 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Documents | Stanley Rodney Nyakundi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: "Segoe UI", sans-serif;
-        background: #e3fafc;
-        color: #333;
-      }
-      nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: none;
-        display: flex;
-        gap: 2rem;
-        padding: 1rem 2rem;
-        z-index: 1000;
-        transition: background 0.3s ease;
-      }
-
-      nav a {
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.3s ease;
-      }
-
-      nav a:hover {
-        color: #00bcd4;
-      }
-
-      .documents-section {
-        padding: 4rem 2rem;
-      }
-
-      .documents-container {
-        max-width: 1100px;
-        margin: auto;
-        text-align: center;
-      }
-
-      .documents-container h2 {
-        font-size: 2rem;
-        color: #004d61;
-        margin-bottom: 1rem;
-      }
-
-      .intro {
-        font-size: 1.1rem;
-        color: #555;
-        margin-bottom: 2.5rem;
-      }
-
-      .document-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 2rem;
-      }
-
-      .document-card {
-        background: #ffffff;
-        padding: 2rem;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        transition: transform 0.3s ease;
-      }
-
-      .document-card:hover {
-        transform: translateY(-5px);
-      }
-
-      .document-card i {
-        font-size: 2rem;
-        color: #00bcd4;
-        margin-bottom: 1rem;
-      }
-
-      .document-card h3 {
-        font-size: 1.25rem;
-        margin-bottom: 0.5rem;
-        color: #007c91;
-      }
-
-      .document-card p {
-        font-size: 0.95rem;
-        color: #666;
-        margin-bottom: 1.2rem;
-      }
-
-      .document-card a {
-        text-decoration: none;
-        background: #00bcd4;
-        color: white;
-        padding: 0.6rem 1rem;
-        border-radius: 8px;
-        font-size: 0.95rem;
-        transition: background 0.3s ease;
-      }
-
-      .document-card a:hover {
-        background: #0097a7;
-      }
-    </style>
   </head>
+  <body class="bg-cyan-50 text-gray-800 font-sans">
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 w-full flex flex-wrap justify-center gap-6 px-6 py-4 bg-white/80 backdrop-blur z-50 shadow-sm"
+    >
+      <a
+        href="index.html"
+        class="text-base font-medium hover:text-cyan-600 transition"
+        >Home</a
+      >
+      <a
+        href="about.html"
+        class="text-base font-medium hover:text-cyan-600 transition"
+        >About</a
+      >
+      <a
+        href="blogs.html"
+        class="text-base font-medium hover:text-cyan-600 transition"
+        >Blog</a
+      >
+      <a
+        href="Documents.html"
+        class="text-base font-medium hover:text-cyan-600 transition"
+        >Documents</a
+      >
+    </nav>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="blogs.html">Blog</a>
-    <a href="Documents.html">Documents</a>
-  </nav>
-  <body>
-    <section class="documents-section">
-      <div class="documents-container">
-        <h2>My Documents</h2>
-        <p class="intro">
+    <!-- Main Content -->
+    <main class="pt-24 px-6 py-12">
+      <section class="max-w-6xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-cyan-900 mb-4">
+          My Documents
+        </h2>
+        <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
           Below are downloadable versions of my résumé and academic/professional
           certifications.
         </p>
 
-        <div class="document-list">
-          <!-- Résumé -->
-          <div class="document-card">
-            <i class="fas fa-file-alt"></i>
-            <h3>Curriculum Vitae (CV)</h3>
-            <p>View and download my up-to-date résumé.</p>
-            <a href="docs/Stanley-Rodney-CV.pdf" download
-              >Download CV <i class="fas fa-download"></i
-            ></a>
+        <!-- Document Grid -->
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left"
+        >
+          <!-- Document Card -->
+          <div
+            class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition-transform transform hover:-translate-y-1"
+          >
+            <div class="text-cyan-600 text-3xl mb-4">
+              <i class="fas fa-file-alt"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-cyan-700 mb-2">
+              Curriculum Vitae (CV)
+            </h3>
+            <p class="text-gray-600 mb-4">
+              View and download my up-to-date résumé.
+            </p>
+            <a
+              href="docs/Stanley-Rodney-CV.pdf"
+              download
+              class="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-md text-sm font-medium transition"
+            >
+              Download CV <i class="fas fa-download"></i>
+            </a>
           </div>
 
-          <!-- Certificate: Degree -->
-          <div class="document-card">
-            <i class="fas fa-certificate"></i>
-            <h3>Bachelor’s Degree Certificate</h3>
-            <p>Civil & Structural Engineering - University of Eldoret, Kenya</p>
-            <a href="docs/Degree-Certificate.pdf" download
-              >Download Certificate <i class="fas fa-download"></i
-            ></a>
+          <!-- Degree Certificate -->
+          <div
+            class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition-transform transform hover:-translate-y-1"
+          >
+            <div class="text-cyan-600 text-3xl mb-4">
+              <i class="fas fa-certificate"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-cyan-700 mb-2">
+              Bachelor’s Degree Certificate
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Civil & Structural Engineering - University of Eldoret, Kenya
+            </p>
+            <a
+              href="docs/Degree-Certificate.pdf"
+              download
+              class="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-md text-sm font-medium transition"
+            >
+              Download Certificate <i class="fas fa-download"></i>
+            </a>
           </div>
 
-          <!-- Certificate: Front-End Dev -->
-          <div class="document-card">
-            <i class="fas fa-code"></i>
-            <h3>Front-End Web Development</h3>
-            <p>Certificate in HTML, CSS & JavaScript Training</p>
-            <a href="docs/Frontend-Cert.pdf" download
-              >Download Certificate <i class="fas fa-download"></i
-            ></a>
+          <!-- Front-End Certificate -->
+          <div
+            class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition-transform transform hover:-translate-y-1"
+          >
+            <div class="text-cyan-600 text-3xl mb-4">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-cyan-700 mb-2">
+              Front-End Web Development
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Certificate in HTML, CSS & JavaScript Training
+            </p>
+            <a
+              href="docs/Frontend-Cert.pdf"
+              download
+              class="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-md text-sm font-medium transition"
+            >
+              Download Certificate <i class="fas fa-download"></i>
+            </a>
           </div>
 
-          <!-- Certificate: AI Tools -->
-          <div class="document-card">
-            <i class="fas fa-robot"></i>
-            <h3>AI Tools & Productivity</h3>
-            <p>Certification in Generative AI Applications</p>
-            <a href="docs/AI-Certificate.pdf" download
-              >Download Certificate <i class="fas fa-download"></i
-            ></a>
+          <!-- AI Certificate -->
+          <div
+            class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition-transform transform hover:-translate-y-1"
+          >
+            <div class="text-cyan-600 text-3xl mb-4">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-cyan-700 mb-2">
+              AI Tools & Productivity
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Certification in Generative AI Applications
+            </p>
+            <a
+              href="docs/AI-Certificate.pdf"
+              download
+              class="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-md text-sm font-medium transition"
+            >
+              Download Certificate <i class="fas fa-download"></i>
+            </a>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   </body>
 </html>
