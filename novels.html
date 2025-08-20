@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whispering Steel Saga | Novels</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f9fafb;
+      color: #222;
+    }
+
+    /* Hero Banner */
+    .hero {
+      position: relative;
+      height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      background: url('images/novel hero bg 2.jpg') center/cover no-repeat;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    .hero-content img {
+      width: 25%;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      border: 4px solid white;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .hero-content a {
+      display: inline-block;
+      background: #dc2626;
+      padding: 12px 30px;
+      border-radius: 9999px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .hero-content a:hover {
+      background: #b91c1c;
+    }
+
+    /* Current Saga */
+    .current-saga {
+      position: relative;
+      padding: 100px 20px;
+      background: url('images/novel/bg.avif') center/cover fixed no-repeat;
+      color: white;
+    }
+
+    .current-saga::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+    }
+
+    .current-saga-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .current-saga h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+    }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .book-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      height: 500px; /* fixed height for all cards */
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+      cursor: pointer;
+    }
+
+    .book-card img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .book-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.4), transparent);
+    }
+
+    .book-content {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      height: 100%;
+      color: white;
+    }
+
+    .book-content h3 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .book-content p {
+      font-size: 14px;
+      line-height: 1.4;
+      max-height: 3.8em;
+      overflow: hidden;
+    }
+
+    .read-more {
+      color: gold;
+      cursor: pointer;
+      margin: 10px 0;
+      font-size: 13px;
+      display: inline-block;
+    }
+
+    .download-btn {
+      display: inline-block;
+      width: 30%;
+      text-align: center;
+      padding: 8px 0;
+      border-radius: 20px;
+      background: linear-gradient(to right, #dc2626, #facc15);
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    /* Upcoming Saga */
+    .upcoming-saga {
+      padding: 80px 20px;
+      background: #f3f4f6;
+    }
+
+    .upcoming-saga h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+    }
+
+    .upcoming-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 30px;
+    }
+
+    .upcoming-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .upcoming-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .upcoming-card .content {
+      padding: 15px;
+    }
+
+    /* Beyond Whispering Steel */
+    .beyond {
+      padding: 80px 20px;
+      background: white;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .beyond h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .beyond p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #555;
+    }
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <div class="hero-content">
+      <img src="images/novel/whispering steel.jpg" alt="Whispering Steel Saga Cover">
+      <h1>Whispering Steel Saga</h1>
+      <p>The beginning of an epic journey across dynasties, martial brotherhoods, and hidden powers. This saga is only the first chapter of many stories to come.</p>
+      <a href="#current-saga">Explore the Saga</a>
+    </div>
+  </section>
+
+  <!-- Current Saga Section -->
+  <section class="current-saga" id="current-saga">
+    <div class="current-saga-content">
+      <h2>The Current Saga</h2>
+
+      <div class="books-grid">
+        <!-- Book 1 -->
+        <div class="book-card">
+          <img src="images/novel/jian.jpg" alt="Book 1">
+          <div class="overlay"></div>
+          <div class="book-content">
+            <h3>Whispering Steel: Echoes of the valley</h3>
+            <p class="synopsis">In the quiet village of Zexin, ten-year-old Jian Xue stumbles upon a relic of unimaginable power — the Heaven's Fall Iron. Unaware of its significance, he awakens forces that will soon engulf his home in flames. By the next day, his village is reduced to ashes, and the young boy is forced to flee, carrying the legendary material that could forge the ultimate weapon.
+
+Journeying through the perilous Xiangjian Valley, Jian immerses himself in martial arts, forging the Whispering Steel sword with relentless determination. Along the way, he meets mentors who sharpen his skills, friends like Hu Xiao who stand by his side, and rivals who test the limits of his resolve. To acquire the rare materials for his sword, he braves deadly tournaments and ventures into the treacherous Baihua Forest, confronting dangers that would break even the bravest of warriors.
+
+Through trials, bloodshed, and the wisdom of masters, Jian transforms from a frightened boy into the valley’s champion. Mastering the secrets of the Whispering Steel, he leads his people against a tyrannical adversary and a nemesis who once hunted him. Victorious yet unfulfilled, Jian leaves the safety of his home, his heart burning with the desire for justice, as he sets out to confront the true architect of his village’s destruction.
+
+A tale of loss, vengeance, and the forging of destiny, Whispering steel:Echoes of the valley. marks the beginning of an epic saga where every blade tells a story, and every choice can ignite a war..</p>
+            <span class="read-more" onclick="toggleSynopsis(this)">Read More</span>
+            <a href="Downloads/novels/BOOK 1. Echoes of the valley.docx" download class="download-btn"><i class="fas fa-download"></i> Download PDF</a>
+          </div>
+        </div>
+
+        <!-- Book 2 -->
+        <div class="book-card">
+          <img src="images/novel/prince yu.jpg" alt="Book 2">
+          <div class="overlay"></div>
+          <div class="book-content">
+            <h3>Whispering Steel: Rise of ash and steel</h3>
+            <p class="synopsis">In the opulent yet treacherous courts of the Tianzhao Empire, young Prince Yu’s life shatters when a palace conspiracy claims the life of his mother. Stripped of his title and exiled from the capital, he vanishes from history, adopting a new identity as Lin Mu. Alone and hunted, he faces a world rife with treachery, betrayal, and deadly obstacles.
+
+Along his journey, Lin Mu finds loyalty in two steadfast companions, forming bonds that will shape his destiny. Through hardship, strategy, and sheer determination, he rises from an unknown exile to command a formidable army. Victories mount, and whispers of his might spread across the empire, earning him the title Heaven’s Scourge, Lord Tianhe.
+
+The path to power, however, is paved with trials. Lin Mu confronts the corrupt noble families who believe themselves above the law, navigates webs of intrigue, and uncovers allies and enemies in unexpected places. Amidst the chaos, he meets Jian Xue from Xiangjian Valley, whose mastery of the Whispering Steel becomes instrumental in the battles to come. Love, loyalty, and betrayal test Lin Mu at every turn as he carves his place in history.
+
+By the end, Lin Mu emerges as the most formidable figure in Tianzhao — a prince restored, a commander feared, and a force that restores order to a fractured empire. Whispering Steel: Rise of ash and steel, is a saga of ambition, vengeance, and the rise of a legend whose blade shapes the fate of nations.</p>
+            <span class="read-more" onclick="toggleSynopsis(this)">Read More</span>
+            <a href="novel2.pdf" download class="download-btn"><i class="fas fa-download"></i> Download PDF</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Saga Section -->
+  <section class="upcoming-saga">
+    <h2>Upcoming in the Saga</h2>
+    <div class="upcoming-grid">
+      <div class="upcoming-card">
+        <img src="images/novel/desert.jpg" alt="Book III">
+        <div class="content">
+          <h3>Whispering Steel: Queen of Crimson Sand</h3>
+          <p>Tells the origin story of Tang Rong, from slave to warrior to Bandit Queen of Scarlet Blade Hall. Her life in the Tianlu Desert, battles with Suhuang clans, and rise to power lead her to an encounter with Prince Yu’s growing cause.</p>
+        </div>
+      </div>
+      <div class="upcoming-card">
+        <img src="images/novel/assasin.jpg" alt="Book IV">
+        <div class="content">
+          <h3>Whispering Steel: Shadows over Xueyang</h3>
+          <p>Ye Kai, an elite assassin of Dark River, navigates a civil fracture within the guild and its war against General Fu Hong of the cold, misted Xueyang State. Slowly, the trail of the benefactor emerges again. At the end, Ye Kai meets Lord Tianhe and Jian — their fates begin to align.</p>
+        </div>
+      </div>
+      <div class="upcoming-card">
+        <img src="images/novel/xueyang.jpg" alt="Book V">
+        <div class="content">
+          <h3>Whispering Steel: The Fivefold Path</h3>
+          <p>Yu, Jian, Ye Kai, Fu Hong, and Tang Rong converge — not always peacefully — in pursuit of the benefactor’s hidden influence. They travel from misty cliffs of Xueyang to the burning trails of Suhuang, discovering the magnitude of the enemy they face. Seeds of trust are tested.</p>
+        </div>
+      </div>
+      <div class="upcoming-card">
+        <img src="images/novel/final.jpg" alt="Book VI">
+        <div class="content">
+          <h3>Whispering Steel: The Severing Sky</h3>
+          <p>The grand finale. The combined force marches to strike the benefactor's network across Tianyuan. They are joined by Xiao Daoren, a reclusive Daoist with roots in forgotten arts. The story culminates in a final confrontation at Yunhai Cliffs, where the benefactor began his rise.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beyond Whispering Steel -->
+  <section class="beyond">
+    <h2>Beyond Whispering Steel</h2>
+    <p>Whispering Steel is only the beginning. Many more sagas and worlds await — each with their own heroes, struggles, and legacies. This journey as a writer is endless, and you are invited to walk it with me.</p>
+  </section>
+
+  <script>
+    function toggleSynopsis(button) {
+      const para = button.previousElementSibling;
+      if (para.style.maxHeight) {
+        para.style.maxHeight = null;
+        button.textContent = "Read More";
+      } else {
+        para.style.maxHeight = "none";
+        button.textContent = "Read Less";
+      }
+    }
+  </script>
+
+</body>
+</html>
