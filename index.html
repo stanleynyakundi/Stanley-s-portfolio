@@ -1,57 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stanley's Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ["Inter", "sans-serif"],
-            },
-            colors: {
-              primary: "#06b6d4",
-              secondary: "#1e293b",
-              accent: "#0ea5e9",
-              dark: "#0f172a",
-            },
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stanley's Portfolio</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+
+  <!-- Google Fonts (Inter) with display=optional -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=optional"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+          },
+          colors: {
+            primary: "#06b6d4",
+            secondary: "#1e293b",
+            accent: "#0ea5e9",
+            dark: "#0f172a",
           },
         },
-      };
-    </script>
-    <style type="text/tailwindcss">
-      @layer utilities {
-        .section-title {
-          @apply text-3xl md:text-4xl font-bold mb-8 text-center text-dark relative;
-        }
-        .section-title:after {
-          @apply content-[''] block w-16 h-1 bg-primary mx-auto mt-4;
-        }
-        .nav-scrolled {
-          @apply bg-white shadow-md;
-        }
-        .nav-scrolled a {
-          @apply text-dark;
-        }
-        .nav-scrolled .mobile-menu {
-          @apply text-dark;
+      },
+    };
+  </script>
+
+  <!-- Dynamically force all fonts to use font-display: optional -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      for (const sheet of document.styleSheets) {
+        try {
+          for (const rule of sheet.cssRules) {
+            if (rule instanceof CSSFontFaceRule) {
+              if (!rule.style.fontDisplay || rule.style.fontDisplay !== "optional") {
+                rule.style.fontDisplay = "optional";
+              }
+            }
+          }
+        } catch (err) {
+          // cross-origin stylesheets throw security errors, just skip
         }
       }
-    </style>
-  </head>
+    });
+  </script>
+
+  <!-- Tailwind utilities -->
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .section-title {
+        @apply text-3xl md:text-4xl font-bold mb-8 text-center text-dark relative;
+      }
+      .section-title:after {
+        @apply content-[''] block w-16 h-1 bg-primary mx-auto mt-4;
+      }
+      .nav-scrolled {
+        @apply bg-white shadow-md;
+      }
+      .nav-scrolled a {
+        @apply text-dark;
+      }
+      .nav-scrolled .mobile-menu {
+        @apply text-dark;
+      }
+    }
+  </style>
+</head>
   <body class="font-sans bg-gray-50 text-gray-700">
     <!-- Navigation -->
     <nav
