@@ -5,35 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stanley's Portfolio</title>
 
-  <!-- Preload Tailwind CDN (will load at end of body) -->
-  <link rel="preload" href="https://cdn.tailwindcss.com" as="script" />
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Font Awesome preload + non-blocking load -->
-  <link
-    rel="preload"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    as="style"
-  />
+  <!-- Font Awesome CSS -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    media="print"
-    onload="this.media='all'"
   />
 
-  <!-- Google Fonts preload + non-blocking load -->
+  <!-- Google Fonts (Inter) with display=optional -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    rel="preload"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=optional"
-    as="style"
-  />
-  <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=optional"
     rel="stylesheet"
-    media="print"
-    onload="this.media='all'"
   />
 
   <!-- Tailwind config -->
@@ -53,6 +39,25 @@
         },
       },
     };
+  </script>
+
+  <!-- Dynamically force all fonts to use font-display: optional -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      for (const sheet of document.styleSheets) {
+        try {
+          for (const rule of sheet.cssRules) {
+            if (rule instanceof CSSFontFaceRule) {
+              if (!rule.style.fontDisplay || rule.style.fontDisplay !== "optional") {
+                rule.style.fontDisplay = "optional";
+              }
+            }
+          }
+        } catch (err) {
+          // cross-origin stylesheets throw security errors, just skip
+        }
+      }
+    });
   </script>
 
   <!-- Tailwind utilities -->
@@ -76,7 +81,6 @@
     }
   </style>
 </head>
-
   <body class="font-sans bg-gray-50 text-gray-700">
     <!-- Navigation -->
     <nav
@@ -772,6 +776,5 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
     </script>
-    <script src="https://cdn.tailwindcss.com" defer></script>
   </body>
 </html>
