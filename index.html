@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stanley's Portfolio</title>
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
+ 
 
-  <!-- Font Awesome CSS -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-  />
+ <!-- Font Awesome -->
+<link rel="preload"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  as="style">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  media="print" onload="this.media='all'">
 
-  <!-- Google Fonts (Inter) with display=optional -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=optional"
-    rel="stylesheet"
-  />
+<!-- Google Fonts -->
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=optional"
+  as="style">
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=optional"
+  rel="stylesheet"
+  media="print" onload="this.media='all'">
+
 
   <!-- Tailwind config -->
   <script>
@@ -80,6 +89,20 @@
       }
     }
   </style>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  for (const sheet of document.styleSheets) {
+    try {
+      for (const rule of sheet.cssRules) {
+        if (rule instanceof CSSFontFaceRule) {
+          rule.style.fontDisplay = "optional";
+        }
+      }
+    } catch (e) {} // ignore CORS-restricted stylesheets
+  }
+});
+</script>
+
 </head>
   <body class="font-sans bg-gray-50 text-gray-700">
     <!-- Navigation -->
@@ -776,5 +799,7 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
     </script>
+     <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
   </body>
 </html>
