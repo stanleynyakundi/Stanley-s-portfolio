@@ -182,44 +182,44 @@
     }
 
     /* Upcoming Saga */
+    .upcoming-saga {
+      padding: 80px 20px;
+      background: #f3f4f6;
+    }
+
+    .upcoming-saga h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+    }
+
+    .upcoming-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 30px;
+    }
+
     .upcoming-card {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  height: 300px; /* fixed height like before */
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  cursor: pointer;
-}
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
 
-.upcoming-card img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;       /* fill like current saga cards */
-  object-position: top;    /* prioritize upper body/head */
-  transition: transform 0.5s;
-}
+    .upcoming-card img {
+      height: 300px;
+      object-fit: cover;
+       position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
 
-.upcoming-card:hover img {
-  transform: scale(1.05);
-}
-
-.upcoming-card .content {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 15px;
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.6),
-    rgba(0,0,0,0.2),
-    transparent
-  );
-  color: white;
-}
-
+    .upcoming-card .content {
+      padding: 15px;
+    }
 
     /* Beyond Whispering Steel */
     .beyond {
