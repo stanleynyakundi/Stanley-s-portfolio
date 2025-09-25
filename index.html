@@ -1,618 +1,1273 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stanley's Portfolio</title>
+  <title>Stanley's Portfolio | Web Designer & Developer</title>
 
-     <!-- Tailwind -->
+  <!-- Preload critical resources -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
- <!-- Font Awesome -->
-<link rel="preload"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-  as="style">
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-  media="print" onload="this.media='all'">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- Google Fonts -->
-<link rel="preload"
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=optional"
-  as="style">
-<link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=optional"
-  rel="stylesheet"
-  media="print" onload="this.media='all'">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link rel="stylesheet" href="style.css">
 
 
-  <!-- Tailwind config -->
+ <!-- Tailwind Configuration -->
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
             sans: ["Inter", "sans-serif"],
+            orbitron: ["Orbitron", "sans-serif"],
+            code: ["Source Code Pro", "monospace"],
           },
           colors: {
             primary: "#06b6d4",
             secondary: "#1e293b",
             accent: "#0ea5e9",
             dark: "#0f172a",
+            neural: {
+              purple: "#a855f7",
+              pink: "#ec4899"
+            }
           },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          }
         },
       },
-    };
-  </script>
-
-  <!-- Dynamically force all fonts to use font-display: optional -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      for (const sheet of document.styleSheets) {
-        try {
-          for (const rule of sheet.cssRules) {
-            if (rule instanceof CSSFontFaceRule) {
-              if (!rule.style.fontDisplay || rule.style.fontDisplay !== "optional") {
-                rule.style.fontDisplay = "optional";
-              }
-            }
-          }
-        } catch (err) {
-          // cross-origin stylesheets throw security errors, just skip
-        }
-      }
-    });
-  </script>
-
-  <!-- Tailwind utilities -->
-  <style type="text/tailwindcss">
-    @layer utilities {
-      .section-title {
-        @apply text-3xl md:text-4xl font-bold mb-8 text-center text-dark relative;
-      }
-      .section-title:after {
-        @apply content-[''] block w-16 h-1 bg-primary mx-auto mt-4;
-      }
-      .nav-scrolled {
-        @apply bg-white shadow-md;
-      }
-      .nav-scrolled a {
-        @apply text-dark;
-      }
-      .nav-scrolled .mobile-menu {
-        @apply text-dark;
-      }
     }
-  </style>
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-  for (const sheet of document.styleSheets) {
-    try {
-      for (const rule of sheet.cssRules) {
-        if (rule instanceof CSSFontFaceRule) {
-          rule.style.fontDisplay = "optional";
-        }
-      }
-    } catch (e) {} // ignore CORS-restricted stylesheets
-  }
-});
-</script>
-
+  </script>
 </head>
-  <body class="font-sans bg-gray-50 text-gray-700">
-    <!-- Navigation -->
-    <nav
-      id="navbar"
-      class="fixed w-full z-50 transition-all duration-300 py-4 px-6"
-    >
-      <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <a href="index.html" class="text-white text-xl font-bold">Stanley</a>
+<body class="antialiased">
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4 px-6 glass">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-white text-xl font-bold futuristic-font flex items-center">
+        <span class="bg-gradient-to-r from-primary to-accent p-2 rounded-lg mr-2">
+          <i class="fas fa-feather-alt"></i>
+        </span>
+        Stanley
+      </a>
 
-        <!-- Desktop Navigation -->
-        <div class="hidden md:flex space-x-8">
-          <a href="index.html" class="text-white hover:text-primary transition"
-            >Home</a
-          >
-          <a href="about.html" class="text-white hover:text-primary transition"
-            >About</a
-          >
-          <a href="blogs.html" class="text-white hover:text-primary transition"
-            >Blog</a
-          >
-          <a
-            href="Documents.html"
-            class="text-white hover:text-primary transition"
-            >Documents</a
-          >
-        </div>
-
-        <!-- Mobile Menu Button -->
-        <button id="mobile-menu-button" class="md:hidden text-white text-2xl">
-          <i class="fas fa-bars"></i>
-        </button>
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex space-x-8">
+        <a href="index.html" class="nav-item text-white hover:text-primary transition">Home</a>
+        <a href="about.html" class="nav-item text-white hover:text-primary transition">About</a>
+        <a href="Projects.html" class="nav-item text-white hover:text-primary transition">Civil Engineering</a>
+        <a href="webdev.html" class="nav-item text-white hover:text-primary transition">Web Development</a>
+        <a href="novels.html" class="nav-item text-primary font-bold transition">Writing</a>
+        <a href="blogs.html" class="nav-item text-white hover:text-primary transition">Blog</a>
+        <a href="Documents.html" class="nav-item text-white hover:text-primary transition">Documents</a>
+        <a href="#contact" class="bg-primary hover:bg-accent text-white font-medium py-2 px-4 rounded-full transition duration-300 glow">Contact</a>
       </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-button" class="md:hidden text-white text-2xl z-50">
+        <i class="fas fa-bars"></i>
+      </button>
 
       <!-- Mobile Menu -->
-      <div
-        id="mobile-menu"
-        class="hidden md:hidden bg-white shadow-lg rounded-lg mt-2 py-2 absolute right-6 left-6"
-      >
-        <a href="index.html" class="block px-4 py-2 text-dark hover:bg-gray-100"
-          >Home</a
-        >
-        <a href="about.html" class="block px-4 py-2 text-dark hover:bg-gray-100"
-          >About</a
-        >
-        <a href="blogs.html" class="block px-4 py-2 text-dark hover:bg-gray-100"
-          >Blog</a
-        >
-        <a
-          href="Documents.html"
-          class="block px-4 py-2 text-dark hover:bg-gray-100"
-          >Documents</a
-        >
+      <div id="mobile-menu" class="hidden md:hidden glass-dark rounded-lg mt-2 py-4 absolute top-full right-6 left-6">
+        <a href="index.html" class="block px-4 py-3 text-white hover:bg-primary/20 transition rounded mx-2">Home</a>
+        <a href="about.html" class="block px-4 py-3 text-white hover:bg-primary/20 transition rounded mx-2">About</a>
+        <a href="Projects.html" class="block px-4 py-3 text-white hover:bg-primary/20 transition rounded mx-2">Civil Engineering</a>
+        <a href="webdev.html" class="block px-4 py-3 text-white hover:bg-primary/20 transition rounded mx-2">Web Development</a>
+        <a href="novels.html" class="block px-4 py-3 text-primary font-medium transition rounded mx-2">Writing</a>
+        <a href="blogs.html" class="block px-4 py-3 text-white hover:bg-primary/20 transition rounded mx-2">Blog</a>
+        <a href="Documents.html" class="block px-4 py-3 text-white hover:bg-primary/20 transition rounded mx-2">Documents</a>
+        <a href="#contact" class="block px-4 py-3 text-primary font-medium text-center mt-2 mx-2">Contact</a>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <!-- Hero Section -->
-    <header
-      class="relative min-h-screen flex items-center justify-center text-white overflow-hidden"
-    >
-      <!-- Background Layer -->
-      <div
-        class="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-        style="background-image: url('images/hero image.jpg')"
-      >
-        <div
-          class="w-full h-full bg-gradient-to-r from-dark/90 via-dark/70 to-gray-800/80"
-        ></div>
-      </div>
+  <!-- Hero Section -->
+  <header class="relative min-h-screen flex items-center justify-center text-white overflow-hidden pt-20">
+    <!-- Animated Background -->
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-gradient-to-br from-dark via-secondary to-dark opacity-90"></div>
+      <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent"></div>
+    </div>
 
-      <!-- Content Layer -->
-      <div
-        class="relative z-10 max-w-7xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-12"
-      >
-        <div class="md:w-1/2">
-          <h1
-            class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white"
-          >
-            Engineer. Developer. Trader. AI Expert. Writer
-          </h1>
-          <p class="text-lg md:text-xl mb-8 leading-relaxed text-white">
-            A dedicated and results-driven Civil Engineering graduate with a
-            strong foundation in architectural design, structural detailing, and
-            web development. Possesses excellent computer literacy and a keen
-            eye for detail, complemented by creative problem-solving abilities.
-          </p>
-          <a
-            href="#contact"
-            class="inline-block bg-primary hover:bg-accent text-white font-medium py-3 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-white/50"
-          >
-            Let's Connect
+    <!-- Content -->
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-12">
+      <div class="md:w-1/2" data-aos="fade-right" data-aos-duration="1000">
+        <div class="inline-block bg-primary/20 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4 glass">
+          <i class="fas fa-rocket mr-2"></i>Innovative Web Designer & Developer
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          <span class="gradient-text futuristic-font">Engineer.</span>
+          <span class="gradient-text futuristic-font">Developer.</span>
+          <span class="gradient-text futuristic-font">Trader.</span>
+          <span class="gradient-text futuristic-font">AI Expert.</span>
+          <span class="gradient-text futuristic-font">Writer</span>
+        </h1>
+        <p class="text-lg md:text-xl mb-8 leading-relaxed text-gray-300">
+          A dedicated and results-driven professional with a strong foundation in architectural design, 
+          structural detailing, and web development. Possesses excellent computer literacy and a keen 
+          eye for detail, complemented by creative problem-solving abilities.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#contact" class="inline-flex items-center justify-center bg-primary hover:bg-accent text-white font-medium py-3 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-xl glow">
+            Let's Connect <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+          <a href="#projects" class="inline-flex items-center justify-center glass text-white font-medium py-3 px-8 rounded-full transition duration-300 border border-primary/30 hover:border-primary/60">
+            View My Work <i class="fas fa-eye ml-2"></i>
           </a>
         </div>
-        <div class="md:w-1/2 flex justify-center">
+        
+        <!-- Stats -->
+        <div class="flex flex-wrap gap-6 mt-12">
+          <div class="text-center">
+            <div class="text-2xl font-bold text-primary">5+</div>
+            <div class="text-sm text-gray-400">Projects Completed</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-primary">2+</div>
+            <div class="text-sm text-gray-400">Years Experience</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-primary">90%</div>
+            <div class="text-sm text-gray-400">Client Satisfaction</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="md:w-1/2 flex justify-center" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+        <div class="relative">
+          <div class="absolute -inset-4 bg-gradient-to-r from-primary to-accent rounded-2xl blur-lg opacity-30"></div>
           <img
             src="images/profile pic.jpg"
             alt="Stanley's Profile"
-            class="rounded-2xl shadow-xl w-full max-w-md border-4 border-white/20"
-             loading="lazy"
+            class="relative rounded-2xl shadow-xl w-full max-w-md border-4 border-white/10 float-animation"
+            loading="lazy"
           />
+          <!-- Floating elements -->
+          <div class="absolute -top-4 -right-4 w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center glass">
+            <i class="fas fa-code text-primary text-xl"></i>
+          </div>
+          <div class="absolute -bottom-4 -left-4 w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center glass">
+            <i class="fas fa-drafting-compass text-accent text-2xl"></i>
+          </div>
         </div>
-      </div>
-    </header>
-
-    <!-- About Section -->
-    <section id="about" class="py-16 px-6">
-      <div class="max-w-7xl mx-auto">
-        <h2 class="section-title">About Me</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Civil Engineer -->
-          <div
-            class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 text-center"
-          >
-            <div class="text-primary text-4xl mb-4">
-              <i class="fas fa-drafting-compass"></i>
-            </div>
-            <h3 class="text-xl font-bold mb-3">Civil Engineer</h3>
-            <p class="text-gray-600">
-              Trained in infrastructure planning, structural analysis, and
-              detailed design using tools like AutoCAD and Revit.
-            </p>
-          </div>
-
-          <!-- Web Developer -->
-          <div
-            class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 text-center"
-          >
-            <div class="text-primary text-4xl mb-4">
-              <i class="fas fa-laptop-code"></i>
-            </div>
-            <h3 class="text-xl font-bold mb-3">Web Developer</h3>
-            <p class="text-gray-600">
-              Experienced in building responsive, user-friendly websites and
-              applications using HTML, CSS, JavaScript, and modern frameworks.
-            </p>
-          </div>
-
-          <!-- AI Expert -->
-          <div
-            class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 text-center"
-          >
-            <div class="text-primary text-4xl mb-4">
-              <i class="fas fa-brain"></i>
-            </div>
-            <h3 class="text-xl font-bold mb-3">AI Expert</h3>
-            <p class="text-gray-600">
-              Knowledgeable in AI tools and applications including AI
-              development and design, chat-based automation, and AI research
-              platforms.
-            </p>
-          </div>
-           <!-- Writer -->
-      <div
-        class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 text-center"
-      >
-        <div class="text-primary text-4xl mb-4">
-          <i class="fas fa-feather-alt"></i>
-        </div>
-        <h3 class="text-xl font-bold mb-3">Writer</h3>
-        <p class="text-gray-600">
-          Author of Chinese-themed historical fantasy novels, blending
-          dynastic intrigue, martial arts philosophy, and imaginative
-          storytelling.
-        </p>
       </div>
     </div>
-  </div>
-</section>
 
-    <!-- Civil Engineering Projects -->
-    <section id="civil" class="py-16 px-6 bg-gray-100">
-      <div class="max-w-7xl mx-auto">
-        <h2 class="section-title">Civil Engineering</h2>
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+      <a href="#about" class="text-white text-2xl animate-bounce">
+        <i class="fas fa-chevron-down"></i>
+      </a>
+    </div>
+  </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <!-- AutoCAD Designs -->
-          <div
-            class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
-          >
+ 
+
+ <!-- About Section -->
+  <section id="about" class="relative py-20 px-6 overflow-hidden">
+    <!-- Animated Background Elements -->
+    <div class="absolute top-10 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
+    <div class="absolute bottom-20 right-10 w-32 h-32 bg-accent/10 rounded-full blur-xl"></div>
+    <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-primary/5 rounded-full blur-lg"></div>
+    
+    <div class="max-w-7xl mx-auto relative z-10">
+      <h2 class="section-title text-white" data-aos="fade-up">
+        About <span class="gradient-text">Me</span>
+      </h2>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+        <!-- Profile Image with Interactive Elements -->
+        <div class="relative" data-aos="fade-right">
+          <div class="absolute -inset-4 bg-gradient-to-r from-primary to-accent rounded-2xl blur-lg opacity-30"></div>
+          <img
+            src="images/profile pic.jpg"
+            alt="Stanley's Profile"
+            class="relative rounded-2xl shadow-xl w-full max-w-md border-4 border-white/10 float-animation"
+            loading="lazy"
+          />
+          
+          <!-- Interactive floating badges -->
+          <div class="absolute -top-4 -right-4 glass p-3 rounded-full">
+            <div class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center">
+              <i class="fas fa-code text-white text-lg"></i>
+            </div>
+            <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-400 rounded-full border-2 border-dark"></div>
+          </div>
+          
+          <div class="absolute -bottom-4 -left-4 glass p-3 rounded-full">
+            <div class="w-14 h-14 bg-gradient-to-br from-accent to-blue-500 rounded-full flex items-center justify-center">
+              <i class="fas fa-drafting-compass text-white text-xl"></i>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Personal Introduction -->
+        <div data-aos="fade-left" data-aos-delay="200">
+          <h3 class="text-2xl md:text-3xl font-bold mb-4 gradient-text">Innovating at the Intersection of Technology & Design</h3>
+          <p class="text-lg text-gray-300 mb-6">
+            I'm a multidisciplinary professional with expertise spanning civil engineering, web development, 
+            AI integration, and creative writing. My unique approach combines analytical thinking with 
+            creative problem-solving to deliver innovative solutions.
+          </p>
+          
+          <!-- Interactive Stats -->
+          <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="glass p-4 rounded-xl text-center">
+              <div class="text-2xl font-bold text-primary mb-1">2+</div>
+              <div class="text-sm text-gray-400">Years Experience</div>
+            </div>
+            <div class="glass p-4 rounded-xl text-center">
+              <div class="text-2xl font-bold text-primary mb-1">5+</div>
+              <div class="text-sm text-gray-400">Projects Completed</div>
+            </div>
+            <div class="glass p-4 rounded-xl text-center">
+              <div class="text-2xl font-bold text-primary mb-1">90%</div>
+              <div class="text-sm text-gray-400">Client Satisfaction</div>
+            </div>
+            <div class="glass p-4 rounded-xl text-center">
+              <div class="text-2xl font-bold text-primary mb-1">10+</div>
+              <div class="text-sm text-gray-400">Technologies</div>
+            </div>
+          </div>
+          
+          <div class="flex flex-wrap gap-3">
+            <a href="#contact" class="bg-primary hover:bg-accent text-white font-medium py-2 px-6 rounded-full transition duration-300 glow">
+              Hire Me
+            </a>
+            <a href="Documents.html" class="glass text-white font-medium py-2 px-6 rounded-full transition duration-300 border border-primary/30 hover:border-primary/60">
+              Download CV
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Skills Section with Interactive Progress Bars -->
+      <div class="mb-16" data-aos="fade-up">
+        <h3 class="text-2xl font-bold mb-8 text-center gradient-text">Technical Skills</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Technical Skills -->
+          <div class="glass p-6 rounded-2xl">
+            <h4 class="text-xl font-bold mb-4 text-primary flex items-center">
+              <i class="fas fa-laptop-code mr-2"></i> Development
+            </h4>
+            
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">HTML/CSS/JavaScript</span>
+                  <span class="text-primary font-bold">75%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="95"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">React & Vue.js</span>
+                  <span class="text-primary font-bold">70%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">Node.js & Express</span>
+                  <span class="text-primary font-bold">60%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="80"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">Python & Django</span>
+                  <span class="text-primary font-bold">55%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="75"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Design & Engineering Skills -->
+          <div class="glass p-6 rounded-2xl">
+            <h4 class="text-xl font-bold mb-4 text-primary flex items-center">
+              <i class="fas fa-drafting-compass mr-2"></i> Design & Engineering
+            </h4>
+            
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">AutoCAD</span>
+                  <span class="text-primary font-bold">70%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="90"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">Revit & BIM</span>
+                  <span class="text-primary font-bold">45%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">Figma & UI/UX</span>
+                  <span class="text-primary font-bold">68%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="88"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">Structural Analysis</span>
+                  <span class="text-primary font-bold">72%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="82"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Interactive Skill Cards -->
+      <div class="mb-16">
+        <h3 class="text-2xl font-bold mb-8 text-center gradient-text" data-aos="fade-up">Core Competencies</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Flip Card 1 -->
+          <div class="skill-card h-64" data-aos="flip-left" data-aos-delay="100">
+            <div class="skill-card-inner w-full h-full rounded-2xl">
+              <div class="skill-card-front glass p-6 rounded-2xl flex flex-col items-center justify-center text-center">
+                <div class="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mb-4">
+                  <i class="fas fa-code text-white text-2xl"></i>
+                </div>
+                <h4 class="text-xl font-bold mb-2">Web Development</h4>
+                <p class="text-gray-300">Full-stack development with modern frameworks</p>
+              </div>
+              <div class="skill-card-back glass p-6 rounded-2xl flex flex-col items-center justify-center text-center bg-gradient-to-br from-primary/20 to-accent/20">
+                <h4 class="text-xl font-bold mb-2">Technologies</h4>
+                <ul class="text-sm text-gray-300 space-y-1">
+                  <li>React</li>
+                  <li>Node.js</li>
+                  <li>MongoDB</li>
+                  <li>Tailwind CSS</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Flip Card 2 -->
+          <div class="skill-card h-64" data-aos="flip-left" data-aos-delay="200">
+            <div class="skill-card-inner w-full h-full rounded-2xl">
+              <div class="skill-card-front glass p-6 rounded-2xl flex flex-col items-center justify-center text-center">
+                <div class="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mb-4">
+                  <i class="fas fa-drafting-compass text-white text-2xl"></i>
+                </div>
+                <h4 class="text-xl font-bold mb-2">Engineering Design</h4>
+                <p class="text-gray-300">Structural analysis and architectural design</p>
+              </div>
+              <div class="skill-card-back glass p-6 rounded-2xl flex flex-col items-center justify-center text-center bg-gradient-to-br from-primary/20 to-accent/20">
+                <h4 class="text-xl font-bold mb-2">Tools & Software</h4>
+                <ul class="text-sm text-gray-300 space-y-1">
+                  <li>AutoCAD</li>
+                  <li>Archicad, SketchUp</li>
+                  <li>ETABS, SAP2000</li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Flip Card 3 -->
+          <div class="skill-card h-64" data-aos="flip-left" data-aos-delay="300">
+            <div class="skill-card-inner w-full h-full rounded-2xl">
+              <div class="skill-card-front glass p-6 rounded-2xl flex flex-col items-center justify-center text-center">
+                <div class="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mb-4">
+                  <i class="fas fa-brain text-white text-2xl"></i>
+                </div>
+                <h4 class="text-xl font-bold mb-2">AI Integration</h4>
+                <p class="text-gray-300">Leveraging AI for enhanced solutions</p>
+              </div>
+              <div class="skill-card-back glass p-6 rounded-2xl flex flex-col items-center justify-center text-center bg-gradient-to-br from-primary/20 to-accent/20">
+                <h4 class="text-xl font-bold mb-2">AI Applications</h4>
+                <ul class="text-sm text-gray-300 space-y-1">
+                  <li>Chatbots & Virtual Assistants</li>
+
+                
+                  <li>AI-Assisted Design</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Experience Timeline -->
+      <div class="mb-16" data-aos="fade-up">
+        <h3 class="text-2xl font-bold mb-8 text-center gradient-text">Professional Journey</h3>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Education Timeline -->
+          <div class="glass p-6 rounded-2xl">
+            <h4 class="text-xl font-bold mb-6 text-primary flex items-center">
+              <i class="fas fa-graduation-cap mr-2"></i> Education
+            </h4>
+            
+            <div class="space-y-6">
+              <div class="timeline-item">
+                <div class="glass-dark p-4 rounded-xl">
+                  <div class="text-primary font-bold mb-1">2020 - 2025</div>
+                  <h5 class="font-bold text-lg">BSc Civil Engineering</h5>
+                  <p class="text-gray-400">University of Eldoret</p>
+                  <p class="text-gray-300 mt-2">Specialized in structural engineering and sustainable design principles.</p>
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="glass-dark p-4 rounded-xl">
+                  <div class="text-primary font-bold mb-1">2024 - 2025</div>
+                  <h5 class="font-bold text-lg">Web Development Certification</h5>
+                  <p class="text-gray-400">Online Program</p>
+                  <p class="text-gray-300 mt-2">Full-stack development with focus on modern JavaScript frameworks.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Experience Timeline -->
+          <div class="glass p-6 rounded-2xl">
+            <h4 class="text-xl font-bold mb-6 text-primary flex items-center">
+              <i class="fas fa-briefcase mr-2"></i> Experience
+            </h4>
+            
+            <div class="space-y-6">
+              <div class="timeline-item">
+                <div class="glass-dark p-4 rounded-xl">
+                  <div class="text-primary font-bold mb-1">2024 - Present</div>
+                  <h5 class="font-bold text-lg">Freelance Web Developer</h5>
+                  <p class="text-gray-400">Remote</p>
+                  <p class="text-gray-300 mt-2">Creating responsive websites and web applications for diverse clients.</p>
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="glass-dark p-4 rounded-xl">
+                  <div class="text-primary font-bold mb-1">2025 - </div>
+                  <h5 class="font-bold text-lg">Engineering Intern</h5>
+                  <p class="text-gray-400">Construction Firm</p>
+                  <p class="text-gray-300 mt-2">Assisted in structural design and project management for residential projects.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Call to Action -->
+      <div class="text-center" data-aos="zoom-in">
+        <div class="glass p-8 rounded-2xl max-w-2xl mx-auto">
+          <h3 class="text-2xl font-bold mb-4 gradient-text">Let's Build Something Amazing Together</h3>
+          <p class="text-gray-300 mb-6">
+            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+          </p>
+          <a href="#contact" class="bg-primary hover:bg-accent text-white font-medium py-3 px-8 rounded-full transition duration-300 glow inline-flex items-center">
+            Start a Conversation <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+   <!-- Civil Engineering Section -->
+  <section id="civil" class="relative py-20 px-6 overflow-hidden">
+    <!-- Animated Background Elements -->
+    <div class="absolute top-10 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
+    <div class="absolute bottom-20 right-10 w-32 h-32 bg-accent/10 rounded-full blur-xl"></div>
+    <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-primary/5 rounded-full blur-lg"></div>
+    
+    <div class="max-w-7xl mx-auto relative z-10">
+      <h2 class="section-title text-white" data-aos="fade-up">
+        Civil <span class="gradient-text">Engineering</span>
+      </h2>
+      
+      <p class="text-center text-xl text-gray-300 max-w-3xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="100">
+        Combining technical precision with innovative design to create sustainable structures that stand the test of time.
+      </p>
+
+      
+
+      <!-- Software Proficiency -->
+      <div class="mb-16" data-aos="fade-up">
+        <h3 class="text-2xl font-bold mb-8 text-center gradient-text">Software Proficiency</h3>
+        
+        <div class="flex flex-wrap justify-center gap-6 mb-8">
+          <div class="tooltip" data-tooltip="AutoCAD">
+            <div class="glass p-4 rounded-xl w-20 h-20 flex items-center justify-center">
+              <i class="fas fa-drafting-compass text-3xl text-primary"></i>
+            </div>
+          </div>
+          <div class="tooltip" data-tooltip="Revit">
+            <div class="glass p-4 rounded-xl w-20 h-20 flex items-center justify-center">
+              <i class="fas fa-cube text-3xl text-primary"></i>
+            </div>
+          </div>
+          <div class="tooltip" data-tooltip="Archicad">
+            <div class="glass p-4 rounded-xl w-20 h-20 flex items-center justify-center">
+              <i class="fas fa-building text-3xl text-primary"></i>
+            </div>
+          </div>
+          <div class="tooltip" data-tooltip="ETABS">
+            <div class="glass p-4 rounded-xl w-20 h-20 flex items-center justify-center">
+              <i class="fas fa-chart-bar text-3xl text-primary"></i>
+            </div>
+          </div>
+          <div class="tooltip" data-tooltip="SketchUp">
+            <div class="glass p-4 rounded-xl w-20 h-20 flex items-center justify-center">
+              <i class="fas fa-vector-square text-3xl text-primary"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="glass p-6 rounded-2xl text-center">
+            <div class="text-4xl text-primary mb-4">
+              <i class="fas fa-drafting-compass"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">2D Drafting</h4>
+            <p class="text-gray-300">Precise technical drawings and blueprints</p>
+          </div>
+          <div class="glass p-6 rounded-2xl text-center">
+            <div class="text-4xl text-primary mb-4">
+              <i class="fas fa-cube"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">3D Modeling</h4>
+            <p class="text-gray-300">Detailed BIM models and visualizations</p>
+          </div>
+          <div class="glass p-6 rounded-2xl text-center">
+            <div class="text-4xl text-primary mb-4">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Structural Analysis</h4>
+            <p class="text-gray-300">Load calculations and safety evaluations</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Filter -->
+      <div class="mb-8" data-aos="fade-up">
+        <h3 class="text-2xl font-bold mb-6 text-center gradient-text">Project Portfolio</h3>
+        
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+          <button class="filter-btn active text-white font-medium py-2 px-4 rounded-full transition duration-300 glass" data-filter="all">
+            All Projects
+          </button>
+          <button class="filter-btn text-white font-medium py-2 px-4 rounded-full transition duration-300 glass" data-filter="residential">
+            Residential
+          </button>
+          <button class="filter-btn text-white font-medium py-2 px-4 rounded-full transition duration-300 glass" data-filter="commercial">
+            Commercial
+          </button>
+          <button class="filter-btn text-white font-medium py-2 px-4 rounded-full transition duration-300 glass" data-filter="infrastructure">
+            Infrastructure
+          </button>
+        </div>
+      </div>
+
+      <!-- Project Gallery -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="project-gallery">
+        <!-- AutoCAD Designs -->
+        <div class="project-card glass overflow-hidden" data-category="residential" data-aos="fade-up" data-aos-delay="100">
+          <div class="relative overflow-hidden">
             <img
               src="/images/Autocad.jpeg"
               alt="AutoCAD Design"
-              class="w-full h-48 object-cover"
-               loading="lazy"
+              class="w-full h-48 object-cover transition-transform duration-500"
+              loading="lazy"
             />
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2">AutoCAD Designs</h3>
-              <p class="text-gray-600 mb-4">
-                Detailed architectural and structural drafts including floor
-                plans, elevation views, and site layouts.
-              </p>
-              <a href="Projects.html" class="text-primary font-medium hover:underline"
-                >View AutoCAD Projects</a
-              >
+            <div class="absolute top-4 right-4 glass px-3 py-1 rounded-full text-sm">
+              <i class="fas fa-drafting-compass mr-1"></i> AutoCAD
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <a href="Projects.html" 
+   class="bg-primary hover:bg-accent text-white font-medium py-2 px-4 rounded-full transition duration-300 w-full text-center block">
+  View AutoCAD Projects
+</a>
+
+              
             </div>
           </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Residential Floor Plans</h3>
+            <p class="text-gray-300 mb-4">
+              Detailed architectural drafts including floor plans, elevation views, and site layouts for modern residential buildings.
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-primary text-sm font-medium">Completed</span>
+              <div class="flex space-x-2">
+                <span class="text-xs glass px-2 py-1 rounded">2D Drafting</span>
+                <span class="text-xs glass px-2 py-1 rounded">Residential</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-          <!-- Archicad Models -->
-          <div
-            class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
-          >
+        <!-- Archicad Models -->
+        <div class="project-card glass overflow-hidden" data-category="commercial" data-aos="fade-up" data-aos-delay="200">
+          <div class="relative overflow-hidden">
             <img
               src="/images/Archicard.jpeg"
               alt="Archicad Models"
-              class="w-full h-48 object-cover"
-               loading="lazy"
+              class="w-full h-48 object-cover transition-transform duration-500"
+              loading="lazy"
             />
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2">Archicad Models</h3>
-              <p class="text-gray-600 mb-4">
-                3D modeling for residential and commercial buildings, showcasing
-                spatial design and volumetric clarity.
-              </p>
-              <a href="Projects.html" class="text-primary font-medium hover:underline"
-                >View Archicad Models</a
-              >
+            <div class="absolute top-4 right-4 glass px-3 py-1 rounded-full text-sm">
+              <i class="fas fa-building mr-1"></i> Archicad
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <a href="Projects.html" 
+   class="bg-primary hover:bg-accent text-white font-medium py-2 px-4 rounded-full transition duration-300 w-full text-center block">
+  View ArchCAD Projects
+</a>
             </div>
           </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Commercial Complex Design</h3>
+            <p class="text-gray-300 mb-4">
+              3D modeling for commercial buildings, showcasing spatial design, volumetric clarity, and functional layouts.
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-primary text-sm font-medium">In Progress</span>
+              <div class="flex space-x-2">
+                <span class="text-xs glass px-2 py-1 rounded">3D Modeling</span>
+                <span class="text-xs glass px-2 py-1 rounded">Commercial</span>
+              </div>
+            </div>
+            <div class="progress-bar mt-2">
+              <div class="progress-fill" data-width="75"></div>
+            </div>
+          </div>
+        </div>
 
-          <!-- Revit BIM -->
-          <div
-            class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
-          >
+        <!-- Revit BIM -->
+        <div class="project-card glass overflow-hidden" data-category="commercial" data-aos="fade-up" data-aos-delay="300">
+          <div class="relative overflow-hidden">
             <img
               src="/images/Revit.jpeg"
               alt="Revit BIM Projects"
-              class="w-full h-48 object-cover"
-               loading="lazy"
+              class="w-full h-48 object-cover transition-transform duration-500"
+              loading="lazy"
             />
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2">Revit BIM</h3>
-              <p class="text-gray-600 mb-4">
-                Integrated building information models with material schedules,
-                structural elements, and MEP coordination.
-              </p>
-              <a href="Projects.html" class="text-primary font-medium hover:underline"
-                >View Revit BIM Projects</a
-              >
+            <div class="absolute top-4 right-4 glass px-3 py-1 rounded-full text-sm">
+              <i class="fas fa-cube mr-1"></i> Revit
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <a href="Projects.html" 
+   class="bg-primary hover:bg-accent text-white font-medium py-2 px-4 rounded-full transition duration-300 w-full text-center block">
+  View Projects
+</a>
             </div>
           </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">BIM Office Building</h3>
+            <p class="text-gray-300 mb-4">
+              Integrated building information models with material schedules, structural elements, and MEP coordination.
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-primary text-sm font-medium">Completed</span>
+              <div class="flex space-x-2">
+                <span class="text-xs glass px-2 py-1 rounded">BIM</span>
+                <span class="text-xs glass px-2 py-1 rounded">Commercial</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-          <!-- Structural Construction -->
-          <div
-            class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1570129477492-45c003edd2be"
-              alt="Structural Construction"
-              class="w-full h-48 object-cover"
-               loading="lazy"
-            />
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2">Structural Construction</h3>
-              <p class="text-gray-600 mb-4">
-                Execution and detailing of concrete and steel structures, with
-                foundation and load-bearing analysis.
-              </p>
-              <a href="Projects.html" class="text-primary font-medium hover:underline"
-                >View Structural Projects</a
-              >
+       
+
+      <!-- Call to Action -->
+      <div class="text-center mt-16" data-aos="zoom-in">
+        <div class="glass p-8 rounded-2xl max-w-2xl mx-auto">
+          <h3 class="text-2xl font-bold mb-4 gradient-text">Ready to Start Your Project?</h3>
+          <p class="text-gray-300 mb-6">
+            Let's collaborate to bring your architectural vision to life with precision engineering and innovative design.
+          </p>
+          <a href="#contact" class="bg-primary hover:bg-accent text-white font-medium py-3 px-8 rounded-full transition duration-300 glow inline-flex items-center">
+            Discuss Your Project <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Web Development Section -->
+  <section id="webdev" class="relative py-20 px-6 overflow-hidden">
+    <!-- Animated Background Elements -->
+    <div class="absolute top-10 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
+    <div class="absolute bottom-20 right-10 w-32 h-32 bg-accent/10 rounded-full blur-xl"></div>
+    
+    <div class="max-w-7xl mx-auto relative z-10">
+      <h2 class="section-title text-white" data-aos="fade-up">
+        Web <span class="gradient-text">Development</span>
+      </h2>
+      
+      <p class="text-center text-xl text-gray-300 max-w-3xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="100">
+        Crafting digital experiences with clean code, innovative design, and cutting-edge technologies.
+      </p>
+
+      <!-- Interactive Code Terminal -->
+      <div class="mb-16 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+        <div class="code-terminal">
+          <div class="terminal-header">
+            <div class="terminal-buttons">
+              <div class="terminal-button close"></div>
+              <div class="terminal-button minimize"></div>
+              <div class="terminal-button maximize"></div>
+            </div>
+            <div class="terminal-title">stanley-dev-portfolio — bash — 80x24</div>
+          </div>
+          <div class="terminal-content">
+            <div class="text-green-400">$ whoami</div>
+            <div class="mb-2">stanley-dev — Full Stack Developer & UI/UX Designer</div>
+            
+            <div class="text-green-400">$ skills --show</div>
+            <div class="grid grid-cols-2 gap-4 mt-2">
+              <div>
+                <div class="flex justify-between text-sm">
+                  <span>Frontend</span>
+                  <span>75%</span>
+                </div>
+                <div class="skill-meter">
+                  <div class="skill-level" data-width="95"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm">
+                  <span>Backend</span>
+                  <span>45%</span>
+                </div>
+                <div class="skill-meter">
+                  <div class="skill-level" data-width="85"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm">
+                  <span>UI/UX Design</span>
+                  <span>70%</span>
+                </div>
+                <div class="skill-meter">
+                  <div class="skill-level" data-width="90"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm">
+                  <span>DevOps</span>
+                  <span>55%</span>
+                </div>
+                <div class="skill-meter">
+                  <div class="skill-level" data-width="75"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="text-green-400 mt-4">$ projects --list</div>
+            <div class="text-cyan-400">
+              <div>> Responsive Portfolio Website</div>
+              <div>> E-commerce Platform</div>
+              <div>> Cost estimation software</div>
+              <div>> Gamegraphix startup</div>
+              <div>> Game website</div>
+              <div>> Business website</div>
+            </div>
+            
+            <div class="text-green-400 mt-4">$ <span class="typewriter">npm start creativity --innovation --passion</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech Stack Visualization -->
+      <div class="mb-16" data-aos="fade-up">
+        <h3 class="text-2xl font-bold mb-8 text-center gradient-text">Tech Stack</h3>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="code-card glass p-6 rounded-2xl text-center">
+            <div class="text-4xl text-primary mb-4">
+              <i class="fab fa-html5"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Frontend</h4>
+            <div class="flex flex-wrap justify-center gap-1">
+              <span class="tech-badge">HTML5</span>
+              <span class="tech-badge">CSS3</span>
+              <span class="tech-badge">JavaScript</span>
+              <span class="tech-badge">React</span>
+              <span class="tech-badge">Vue.js</span>
+              <span class="tech-badge">Tailwind</span>
+            </div>
+          </div>
+          
+          <div class="code-card glass p-6 rounded-2xl text-center">
+            <div class="text-4xl text-primary mb-4">
+              <i class="fas fa-server"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Backend</h4>
+            <div class="flex flex-wrap justify-center gap-1">
+              <span class="tech-badge">Node.js</span>
+              <span class="tech-badge">Express</span>
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">Django</span>
+              
+              <span class="tech-badge">MySQL</span>
+            </div>
+          </div>
+          
+          <div class="code-card glass p-6 rounded-2xl text-center">
+            <div class="text-4xl text-primary mb-4">
+              <i class="fas fa-palette"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Design</h4>
+            <div class="flex flex-wrap justify-center gap-1">
+              <span class="tech-badge">Figma</span>
+
+              <span class="tech-badge">Sketch</span>
+              <span class="tech-badge">UI/UX</span>
+              <span class="tech-badge">Wireframing</span>
+              <span class="tech-badge">Prototyping</span>
+            </div>
+          </div>
+          
+          <div class="code-card glass p-6 rounded-2xl text-center">
+            <div class="text-4xl text-primary mb-4">
+              <i class="fas fa-tools"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Tools</h4>
+            <div class="flex flex-wrap justify-center gap-1">
+              <span class="tech-badge">Git</span>
+
+              <span class="tech-badge">VS Code</span>
+              <span class="tech-badge">Chrome DevTools</span>
+
             </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- Web Development Projects -->
-    <section id="webdev" class="py-16 px-6 bg-secondary text-white">
-      <div class="max-w-7xl mx-auto">
-        <h2
-          class="text-3xl md:text-4xl font-bold mb-8 text-center text-white relative"
-        >
-          Web Development & Design
-          <span class="block w-16 h-1 bg-primary mx-auto mt-4"></span>
-        </h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <!-- Front-End Projects -->
-          <div
-            class="bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
-          >
-            <img
-              src="/images/programming.jpg"
-              alt="HTML CSS JS"
-              class="w-full h-48 object-cover"
-               loading="lazy"
-            />
+      <!-- Live Code Projects -->
+      <div class="mb-16">
+        <h3 class="text-2xl font-bold mb-8 text-center gradient-text" data-aos="fade-up">Featured Projects</h3>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Project 1: Portfolio Website -->
+          <div class="code-card glass rounded-2xl overflow-hidden" data-aos="fade-right">
             <div class="p-6">
-              <h3 class="text-xl font-bold mb-2">Front-End Projects</h3>
+              <div class="flex justify-between items-start mb-4">
+                <h4 class="text-xl font-bold">Responsive Portfolio</h4>
+                <div class="flex space-x-2">
+                  <span class="tech-badge">HTML</span>
+                  <span class="tech-badge">CSS</span>
+                  <span class="tech-badge">JS</span>
+                </div>
+              </div>
               <p class="text-gray-300 mb-4">
-                Crafted responsive web experiences using HTML, CSS, and
-                JavaScript. Built multi-page websites and single-page
-                applications.
+                A fully responsive portfolio website with modern design, smooth animations, and optimized performance.
               </p>
-              <div class="flex flex-col space-y-2">
-                <a href="webdev.html" class="text-primary font-medium hover:underline"
-                  >View Front-End Projects</a
-                >
-                <a
-                  href="https://github.com/stanleynyakundi"
-                  target="_blank"
-                  class="text-primary font-medium hover:underline"
-                  >GitHub Repository</a
-                >
+              
+              <!-- Code Preview -->
+              <div class="code-terminal mb-4">
+                <div class="terminal-header">
+                  <div class="terminal-buttons">
+                    <div class="terminal-button close"></div>
+                    <div class="terminal-button minimize"></div>
+                    <div class="terminal-button maximize"></div>
+                  </div>
+                  <div class="terminal-title">portfolio.html</div>
+                </div>
+                <div class="terminal-content">
+                  <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;My Portfolio&lt;/title&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;nav class="glass"&gt;
+      &lt;!-- Navigation content --&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;section id="hero"&gt;
+      &lt;h1&gt;Creative Developer&lt;/h1&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+              </div>
+              
+              <div class="flex justify-between items-center">
+                <div class="flex space-x-2">
+                  <a href="#" class="bg-primary hover:bg-accent text-white font-medium py-2 px-4 rounded transition duration-300 text-sm">
+                    Live Demo
+                  </a>
+                  <a href="https://github.com/stanleynyakundi/Stanley-s-portfolio" class="glass text-white font-medium py-2 px-4 rounded transition duration-300 text-sm border border-primary/30">
+                    Source Code
+                  </a>
+                </div>
+                <div class="text-xs text-gray-400">Last updated: 2 weeks ago</div>
               </div>
             </div>
           </div>
 
-          <!-- UI/UX Design -->
-          <div
-            class="bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1605379399642-870262d3d051"
-              alt="UI/UX Figma Design"
-              class="w-full h-48 object-cover"
-               loading="lazy"
-            />
+          <!-- Project 2: E-commerce Platform -->
+          <div class="code-card glass rounded-2xl overflow-hidden" data-aos="fade-left">
             <div class="p-6">
-              <h3 class="text-xl font-bold mb-2">UI/UX Design</h3>
+              <div class="flex justify-between items-start mb-4">
+                <h4 class="text-xl font-bold">E-commerce Platform</h4>
+                <div class="flex space-x-2">
+                  <span class="tech-badge">React</span>
+                  <span class="tech-badge">Node.js</span>
+                  <span class="tech-badge">MongoDB</span>
+                </div>
+              </div>
               <p class="text-gray-300 mb-4">
-                Designed intuitive interfaces and wireframes in Figma. Focused
-                on usability and visual clarity for digital products.
+                Full-stack e-commerce solution with user authentication, product management, and payment integration.
               </p>
-              <a href="#" class="text-primary font-medium hover:underline"
-                >View Figma Designs</a
-              >
+              
+              <!-- Code Preview -->
+              <div class="code-terminal mb-4">
+                <div class="terminal-header">
+                  <div class="terminal-buttons">
+                    <div class="terminal-button close"></div>
+                    <div class="terminal-button minimize"></div>
+                    <div class="terminal-button maximize"></div>
+                  </div>
+                  <div class="terminal-title">ProductCard.jsx</div>
+                </div>
+                <div class="terminal-content">
+                  <pre><code class="language-javascript">import React from 'react';
+
+const ProductCard = ({ product, onAddToCart }) => {
+  return (
+    &lt;div className="product-card glass"&gt;
+      &lt;img src={product.image} alt={product.name} /&gt;
+      &lt;h3&gt;{product.name}&lt;/h3&gt;
+      &lt;p&gt;${product.price}&lt;/p&gt;
+      &lt;button onClick={() => onAddToCart(product)}&gt;
+        Add to Cart
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+};
+
+export default ProductCard;</code></pre>
+                </div>
+              </div>
+              
+              <div class="flex justify-between items-center">
+                <div class="flex space-x-2">
+                  <a href="#" class="bg-primary hover:bg-accent text-white font-medium py-2 px-4 rounded transition duration-300 text-sm">
+                    Live Demo
+                  </a>
+                  <a href="https://github.com/stanleynyakundi/GameGraphix" class="glass text-white font-medium py-2 px-4 rounded transition duration-300 text-sm border border-primary/30">
+                    Source Code
+                  </a>
+                </div>
+                <div class="text-xs text-gray-400">Last updated: 1 month ago</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- AI Expertise -->
-    <section id="ai" class="py-16 px-6 bg-dark text-white">
-      <div class="max-w-7xl mx-auto">
-        <h2
-          class="text-3xl md:text-4xl font-bold mb-8 text-center text-accent relative"
+      <!-- GitHub Contribution Graph -->
+      <div class="mb-16" data-aos="fade-up">
+        <h3 class="text-2xl font-bold mb-8 text-center gradient-text">Development Activity</h3>
+        
+        <div class="glass p-6 rounded-2xl">
+          <div class="flex justify-between items-center mb-4">
+            <h4 class="text-lg font-bold">GitHub Contributions</h4>
+            <a href="https://github.com/stanleynyakundi" class="text-primary hover:text-accent transition duration-300 text-sm">
+              View Profile <i class="fas fa-external-link-alt ml-1"></i>
+            </a>
+          </div>
+          
+          <!-- Mock GitHub Contribution Graph -->
+          <div class="contribution-graph">
+            <div class="flex justify-between mb-2">
+              <span class="text-sm text-gray-400">Mon</span>
+              <span class="text-sm text-gray-400">Wed</span>
+              <span class="text-sm text-gray-400">Fri</span>
+              <span class="text-sm text-gray-400">Sun</span>
+            </div>
+            <div class="grid grid-cols-7 gap-1">
+              <!-- This would be dynamically generated in a real implementation -->
+              <div class="h-4 bg-green-900 rounded-sm" title="0 contributions"></div>
+              <div class="h-4 bg-green-700 rounded-sm" title="2 contributions"></div>
+              <div class="h-4 bg-green-500 rounded-sm" title="4 contributions"></div>
+              <div class="h-4 bg-green-300 rounded-sm" title="6 contributions"></div>
+              <div class="h-4 bg-green-100 rounded-sm" title="8+ contributions"></div>
+              <div class="h-4 bg-green-900 rounded-sm" title="0 contributions"></div>
+              <div class="h-4 bg-green-700 rounded-sm" title="2 contributions"></div>
+              <!-- Repeat for several weeks -->
+            </div>
+            <div class="flex justify-between mt-2">
+              <span class="text-xs text-gray-500">Less</span>
+              <span class="text-xs text-gray-500">More</span>
+            </div>
+          </div>
+          
+          <div class="mt-4 flex justify-between text-sm text-gray-400">
+            <span>Total Contributions: 1,247</span>
+            <span>Longest Streak: 28 days</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="text-center" data-aos="zoom-in">
+        <div class="glass p-8 rounded-2xl max-w-2xl mx-auto">
+          <h3 class="text-2xl font-bold mb-4 gradient-text">Let's Code Something Amazing</h3>
+          <p class="text-gray-300 mb-6">
+            Have a project in mind? Let's collaborate to turn your ideas into functional, beautiful digital solutions.
+          </p>
+          <a href="#contact" class="bg-primary hover:bg-accent text-white font-medium py-3 px-8 rounded-full transition duration-300 glow inline-flex items-center">
+            Start a Project <i class="fas fa-code ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Writing & Storytelling Section -->
+  <section id="writing" class="relative py-16 px-6">
+    <!-- Animated Background Elements -->
+    <div class="absolute top-10 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
+    <div class="absolute bottom-20 right-10 w-32 h-32 bg-accent/10 rounded-full blur-xl"></div>
+    
+    <div class="max-w-7xl mx-auto relative z-10">
+      <h2 class="section-title text-white">
+        Writing & <span class="gradient-text">Storytelling</span>
+      </h2>
+      
+      <p class="text-center text-lg text-gray-300 max-w-3xl mx-auto mb-12">
+        Exploring creative narratives through historical fantasy, blending authentic cultural elements with imaginative storytelling.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Historical Worldbuilding -->
+        <div class="writing-card glass p-8 rounded-2xl text-center">
+          <div class="writing-icon text-primary text-4xl mb-4 float-animation">
+            <i class="fas fa-landmark"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Historical Worldbuilding</h3>
+          <p class="text-gray-300">
+            Crafting dynastic settings inspired by ancient China, blending
+            authentic culture, politics, and philosophy with immersive fantasy
+            elements.
+          </p>
+        </div>
+
+        <!-- Martial Arts Fantasy -->
+        <div class="writing-card glass p-8 rounded-2xl text-center">
+          <div class="writing-icon text-primary text-4xl mb-4 float-animation" style="animation-delay: 1s;">
+            <i class="fas fa-dragon"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Martial Arts Fantasy</h3>
+          <p class="text-gray-300">
+            Writing wuxia-inspired tales of martial heroes, brotherhood,
+            honor, and the struggle for power across empires and sects.
+          </p>
+        </div>
+
+        <!-- Character-Driven Drama -->
+        <div class="writing-card glass p-8 rounded-2xl text-center">
+          <div class="writing-icon text-primary text-4xl mb-4 float-animation" style="animation-delay: 2s;">
+            <i class="fas fa-theater-masks"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Character-Driven Drama</h3>
+          <p class="text-gray-300">
+            Focused on deeply human struggles — loyalty, ambition, betrayal,
+            and redemption — that bring readers emotionally into the heart of
+            each story.
+          </p>
+        </div>
+      </div>
+
+      <!-- Read Stories Button -->
+      <div class="text-center mt-12">
+        <a
+          href="novels.html"
+          class="inline-block bg-primary hover:bg-accent text-white font-medium py-3 px-8 rounded-full transition duration-300 glow"
         >
-          AI Integration & Expertise
-          <span class="block w-16 h-1 bg-primary mx-auto mt-4"></span>
-        </h2>
+          Read My Stories
+        </a>
+      </div>
+    </div>
+  </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <!-- AI in Design -->
-          <div
-            class="bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 text-center"
-          >
-            <div class="text-primary text-4xl mb-4">
-              <i class="fas fa-brain"></i>
+      <!-- Testimonials Section -->
+<section id="testimonials" class="relative py-20 px-6 overflow-hidden">
+  <!-- Animated Background Elements -->
+  <div class="absolute top-10 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
+  <div class="absolute bottom-20 right-10 w-32 h-32 bg-accent/10 rounded-full blur-xl"></div>
+  
+  <div class="max-w-7xl mx-auto relative z-10">
+    <h2 class="section-title text-white">
+      What <span class="gradient-text">People Say</span>
+    </h2>
+    
+    <p class="text-center text-lg text-gray-300 max-w-3xl mx-auto mb-12">
+      Don't just take my word for it. Here's what clients and colleagues have to say about working with me.
+    </p>
+
+    <!-- Simple Testimonials Container -->
+    <div class="testimonials-container relative">
+      <div class="testimonial-wrapper overflow-hidden">
+        <div class="testimonials-track flex transition-transform duration-500 ease-in-out">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-slide min-w-full px-4">
+            <div class="testimonial-card glass p-8 rounded-2xl text-center">
+              <div class="quote-icon text-4xl text-primary mb-4">
+                <i class="fas fa-quote-left"></i>
+              </div>
+              <p class="testimonial-text text-lg text-gray-300 mb-6 italic">
+                "Stanley's ability to merge creativity with technical skill is unmatched. 
+                He brought our project to life with precision and style, delivering beyond our expectations."
+              </p>
+              <div class="testimonial-author flex items-center justify-center gap-4">
+                <div class="author-avatar w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center text-white">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div class="author-info text-left">
+                  <h4 class="author-name font-bold text-white">Aisha Mburu</h4>
+                  <p class="author-title text-gray-400 text-sm">Architect, Design Innovations Ltd</p>
+                </div>
+              </div>
             </div>
-            <h3 class="text-xl font-bold mb-3">AI in Design</h3>
-            <p class="text-gray-300">
-              Utilizes AI platforms like Midjourney, DALL·E, and Adobe Firefly
-              to generate UI components, graphic assets, and visual themes that
-              align with brand identity and creative needs.
-            </p>
           </div>
 
-          <!-- AI in Development -->
-          <div
-            class="bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 text-center"
-          >
-            <div class="text-primary text-4xl mb-4">
-              <i class="fas fa-code"></i>
+          <!-- Testimonial 2 -->
+          <div class="testimonial-slide min-w-full px-4">
+            <div class="testimonial-card glass p-8 rounded-2xl text-center">
+              <div class="quote-icon text-4xl text-primary mb-4">
+                <i class="fas fa-quote-left"></i>
+              </div>
+              <p class="testimonial-text text-lg text-gray-300 mb-6 italic">
+                "His structural designs are both practical and elegant. We were impressed by his 
+                detail-oriented work ethic and ability to solve complex engineering challenges."
+              </p>
+              <div class="testimonial-author flex items-center justify-center gap-4">
+                <div class="author-avatar w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center text-white">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div class="author-info text-left">
+                  <h4 class="author-name font-bold text-white">David Otieno</h4>
+                  <p class="author-title text-gray-400 text-sm">Civil Works Engineer, ConstructPro</p>
+                </div>
+              </div>
             </div>
-            <h3 class="text-xl font-bold mb-3">AI in Development</h3>
-            <p class="text-gray-300">
-              Leverages AI coding assistants like GitHub Copilot and Tabnine for
-              rapid prototyping, debugging, and efficient implementation of
-              JavaScript, Python, and HTML/CSS features.
-            </p>
           </div>
 
-          <!-- AI for Research -->
-          <div
-            class="bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 text-center"
-          >
-            <div class="text-primary text-4xl mb-4">
-              <i class="fas fa-search"></i>
+          <!-- Testimonial 3 -->
+          <div class="testimonial-slide min-w-full px-4">
+            <div class="testimonial-card glass p-8 rounded-2xl text-center">
+              <div class="quote-icon text-4xl text-primary mb-4">
+                <i class="fas fa-quote-left"></i>
+              </div>
+              <p class="testimonial-text text-lg text-gray-300 mb-6 italic">
+                "The websites Stanley created exceeded expectations — user-friendly, visually appealing, 
+                and built with best practices in mind. His attention to detail is remarkable."
+              </p>
+              <div class="testimonial-author flex items-center justify-center gap-4">
+                <div class="author-avatar w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center text-white">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div class="author-info text-left">
+                  <h4 class="author-name font-bold text-white">Faith Kimani</h4>
+                  <p class="author-title text-gray-400 text-sm">UX Designer, Digital Solutions Inc</p>
+                </div>
+              </div>
             </div>
-            <h3 class="text-xl font-bold mb-3">AI for Research</h3>
-            <p class="text-gray-300">
-              Uses AI-powered tools for data analysis, research automation,
-              language modeling, and content summarization across civil, design,
-              and trading disciplines.
-            </p>
-          </div>
-
-          <!-- Problem Solving -->
-          <div
-            class="bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 text-center"
-          >
-            <div class="text-primary text-4xl mb-4">
-              <i class="fas fa-lightbulb"></i>
-            </div>
-            <h3 class="text-xl font-bold mb-3">Problem Solving</h3>
-            <p class="text-gray-300">
-              Applies AI decision engines, generative models, and logic
-              assistants to break down complex problems, simulate outcomes, and
-              offer optimal solutions in multi-domain tasks.
-            </p>
           </div>
         </div>
       </div>
-    </section>
-  <!-- Writer Section -->
-<section id="writer" class="py-16 px-6 bg-gray-50">
-  <div class="max-w-7xl mx-auto">
-    <h2 class="section-title">Writing & Storytelling</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Novel Worldbuilding -->
-      <div
-        class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 p-8 text-center"
-      >
-        <div class="text-primary text-4xl mb-4">
-          <i class="fas fa-landmark"></i>
+      <!-- Navigation Controls -->
+      <div class="carousel-controls flex justify-center items-center gap-6 mt-8">
+        <button class="carousel-prev bg-primary/20 hover:bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="carousel-indicators flex gap-2">
+          <button class="indicator w-3 h-3 rounded-full bg-gray-600 hover:bg-primary transition-all duration-300 active:bg-primary"></button>
+          <button class="indicator w-3 h-3 rounded-full bg-gray-600 hover:bg-primary transition-all duration-300"></button>
+          <button class="indicator w-3 h-3 rounded-full bg-gray-600 hover:bg-primary transition-all duration-300"></button>
         </div>
-        <h3 class="text-xl font-bold mb-3">Historical Worldbuilding</h3>
-        <p class="text-gray-600">
-          Crafting dynastic settings inspired by ancient China, blending
-          authentic culture, politics, and philosophy with immersive fantasy
-          elements.
-        </p>
-      </div>
-
-      <!-- Martial Arts Fantasy -->
-      <div
-        class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 p-8 text-center"
-      >
-        <div class="text-primary text-4xl mb-4">
-          <i class="fas fa-dragon"></i>
-        </div>
-        <h3 class="text-xl font-bold mb-3">Martial Arts Fantasy</h3>
-        <p class="text-gray-600">
-          Writing wuxia-inspired tales of martial heroes, brotherhood,
-          honor, and the struggle for power across empires and sects.
-        </p>
-      </div>
-
-      <!-- Character-Driven Drama -->
-      <div
-        class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 p-8 text-center"
-      >
-        <div class="text-primary text-4xl mb-4">
-          <i class="fas fa-theater-masks"></i>
-        </div>
-        <h3 class="text-xl font-bold mb-3">Character-Driven Drama</h3>
-        <p class="text-gray-600">
-          Focused on deeply human struggles — loyalty, ambition, betrayal,
-          and redemption — that bring readers emotionally into the heart of
-          each story.
-        </p>
+        
+        <button class="carousel-next bg-primary/20 hover:bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300">
+          <i class="fas fa-chevron-right"></i>
+        </button>
       </div>
     </div>
 
-    <!-- Read Stories Button -->
-    <div class="text-center mt-12">
-      <a
-        href="novels.html"
-        class="inline-block bg-primary hover:bg-accent text-white font-medium py-3 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-primary/50"
-      >
-        Read My Stories
-      </a>
+    <!-- Stats Section -->
+    <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="stat-card glass p-6 rounded-xl text-center">
+        <div class="stat-number text-4xl font-bold text-primary mb-2">5+</div>
+        <div class="stat-label text-gray-400">Projects Completed</div>
+      </div>
+      <div class="stat-card glass p-6 rounded-xl text-center">
+        <div class="stat-number text-4xl font-bold text-primary mb-2">90%</div>
+        <div class="stat-label text-gray-400">Client Satisfaction</div>
+      </div>
+      <div class="stat-card glass p-6 rounded-xl text-center">
+        <div class="stat-number text-4xl font-bold text-primary mb-2">2+</div>
+        <div class="stat-label text-gray-400">Years Experience</div>
+      </div>
+      <div class="stat-card glass p-6 rounded-xl text-center">
+        <div class="stat-number text-4xl font-bold text-primary mb-2">2</div>
+        <div class="stat-label text-gray-400">Awards Received</div>
+      </div>
     </div>
   </div>
 </section>
 
-    <!-- Testimonials -->
-    <section id="testimonials" class="py-16 px-6 bg-gray-100">
-      <div class="max-w-7xl mx-auto">
-        <h2 class="section-title">What People Say</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Testimonial 1 -->
-          <div class="bg-white p-8 rounded-xl shadow-md">
-            <p class="italic text-gray-600 mb-4">
-              "Stanley's's ability to merge creativity with technical skill is
-              unmatched. He brought our project to life with precision and
-              style."
-            </p>
-            <h4 class="font-bold text-gray-800">— Aisha Mburu, Architect</h4>
-          </div>
-
-          <!-- Testimonial 2 -->
-          <div class="bg-white p-8 rounded-xl shadow-md">
-            <p class="italic text-gray-600 mb-4">
-              "His structural designs are both practical and elegant. We were
-              impressed by his detail-oriented work ethic."
-            </p>
-            <h4 class="font-bold text-gray-800">
-              — David Otieno, Civil Works Engineer
-            </h4>
-          </div>
-
-          <!-- Testimonial 3 -->
-          <div class="bg-white p-8 rounded-xl shadow-md">
-            <p class="italic text-gray-600 mb-4">
-              "The websites stanley created exceeded expectations —
-              user-friendly, visually appealing, and built with best practices
-              in mind."
-            </p>
-            <h4 class="font-bold text-gray-800">— Faith Kimani, UX Designer</h4>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Contact & Footer -->
     <div class="max-w-7xl mx-auto px-6 py-12">
@@ -767,39 +1422,10 @@ document.addEventListener("DOMContentLoaded", () => {
       ↑
     </button>
 
-    <script>
-      // Mobile Menu Toggle
-      const mobileMenuButton = document.getElementById("mobile-menu-button");
-      const mobileMenu = document.getElementById("mobile-menu");
+   <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+ <script src="script.js"></script>
 
-      mobileMenuButton.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
-
-      // Navbar Scroll Effect
-      const navbar = document.getElementById("navbar");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 100) {
-          navbar.classList.add("nav-scrolled");
-        } else {
-          navbar.classList.remove("nav-scrolled");
-        }
-      });
-
-      // Scroll to Top Button
-      const scrollButton = document.getElementById("scroll-top");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 300) {
-          scrollButton.classList.remove("hidden");
-        } else {
-          scrollButton.classList.add("hidden");
-        }
-      });
-
-      scrollButton.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    </script>
- 
   </body>
 </html>

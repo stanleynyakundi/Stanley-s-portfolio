@@ -1,30 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Stanley Rodney Nyakundi</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
+    <title>About Stanley Rodney Nyakundi | Multidisciplinary Creator</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
       :root {
-        --primary-color: #00bcd4;
-        --text-color: #333;
-        --header-color: #004d61;
-        --section-title-color: #007c91;
-        --background-color: #e3fafc;
-        --font-main: "Segoe UI", sans-serif;
-      }
+            --primary: #06b6d4;
+            --primary-dark: #0891b2;
+            --secondary: #1e293b;
+            --accent: #0ea5e9;
+            --dark: #0f172a;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
 
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: var(--font-main);
-        background: var(--background-color);
-        color: var(--text-color);
-      }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        .futuristic-font {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Glass morphism effect */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+        }
+
+        .glass-dark {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Custom gradient text */
+        .gradient-text {
+            background: linear-gradient(90deg, #06b6d4, #0ea5e9, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
 
       nav {
         position: fixed;
@@ -134,139 +183,636 @@
           font-size: 0.95rem;
         }
       }
+      
+        /* Glow effect */
+        .glow {
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+        }
+
+        .glow:hover {
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.5);
+        }
+
+        /* Interactive cards */
+        .interactive-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .interactive-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .interactive-card:hover::before {
+            left: 100%;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-5px);
+        }
+
     </style>
-  </head>
-  <body>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="blogs.html">Blog</a>
-      <a href="Documents.html">Documents</a>
+ <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        orbitron: ["Orbitron", "sans-serif"],
+                    },
+                    colors: {
+                        primary: "#06b6d4",
+                        secondary: "#1e293b",
+                        accent: "#0ea5e9",
+                        dark: "#0f172a",
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="antialiased">
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4 px-6 glass">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-white text-xl font-bold futuristic-font flex items-center">
+                <span class="bg-gradient-to-r from-primary to-accent p-2 rounded-lg mr-2">
+                    <i class="fas fa-user"></i>
+                </span>
+                Stanley
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="nav-item text-white hover:text-primary transition">Home</a>
+                <a href="#about" class="nav-item text-primary font-bold transition">About</a>
+                <a href=" projects.html" class="nav-item text-white hover:text-primary transition">Engineering</a>
+                <a href="webdev.html" class="nav-item text-white hover:text-primary transition">Web Dev</a>
+                <a href="novels.html" class="nav-item text-white hover:text-primary transition">Writing</a>
+                <a href="blogs.html" class="nav-item text-white hover:text-primary transition">Blog</a>
+                <a href="Documents.html" class="nav-item text-white hover:text-primary transition">Documents</a>
+                <a href="#contact" class="bg-primary hover:bg-accent text-white font-medium py-2 px-4 rounded-full transition duration-300 glow">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-white text-2xl z-50">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden glass-dark rounded-lg mt-2 py-4 absolute top-full right-6 left-6">
+                <a href="index.html" class="block px-4 py-3 text-white hover:bg-primary/20 transition rounded mx-2">Home</a>
+                <a href="#about" class="block px-4 py-3 text-primary font-medium transition rounded mx-2">About</a>
+                <a href="projects.html" class="block px-4 py-3 text-white hover:bg-primary/20 transition rounded mx-2">Engineering</a>
+                <a href="webdev.html" class="block px-4 py-3 text-white hover:bg-primary/20 transition rounded mx-2">Web Dev</a>
+                <a href="novels.html" class="block px-4 py-3 text-white hover:bg-primary/20 transition rounded mx-2">Writing</a>
+                <a href="blogs.html" class="block px-4 py-3 text-white hover:bg-primary/20 transition rounded mx-2">Blog</a>
+                <a href="Documents.html" class="block px-4 py-3 text-white hover:bg-primary/20 transition rounded mx-2">Documents</a>
+                <a href="#contact" class="block px-4 py-3 text-primary font-medium text-center mt-2 mx-2">Contact</a>
+            </div>
+        </div>
     </nav>
 
-    <main>
-      <section id="about-page" class="about-detailed">
-        <div class="about-container">
-          <h2>About Me</h2>
-
-          <p>
-            Hello! I’m <strong>Stanley Rodney Nyakundi</strong>, a
-            multidisciplinary creator and solutions-driven thinker. I hold a
-            <strong
-              >Bachelor’s degree in Civil and Structural Engineering</strong
-            >
-            from the <strong>University of Eldoret, Kenya</strong>, where I
-            built a solid foundation in design, analysis, and problem-solving
-            through real-world engineering challenges.
-          </p>
-
-          <p>
-            In addition to my engineering background, I have developed strong
-            capabilities in
-            <strong>front-end web development</strong>, with hands-on experience
-            in <strong>HTML, CSS, and JavaScript</strong>, allowing me to create
-            responsive, user-centered web applications. My design sensibilities
-            are further enhanced through my understanding of UI/UX principles
-            and tools like Figma.
-          </p>
-
-          <p>
-            I am also an avid practitioner of
-            <strong>AI tool integration</strong>, leveraging platforms such as
-            <strong>ChatGPT, DeepSeek</strong>, and other generative AI systems
-            for productivity, automation, research, and creative
-            problem-solving. These technologies allow me to bridge complex ideas
-            with innovative digital solutions.
-          </p>
-
-          <p>
-            While I maintain a keen interest in the financial world and
-            occasionally explore
-            <strong>currency trading</strong>, my true focus lies in combining
-            technical knowledge with creativity to build impactful systems and
-            experiences that align with modern digital evolution.
-          </p>
-
-          <div class="about-columns">
-            <div class="about-section">
-              <h3>Core Interests</h3>
-              <ul>
-                <li>
-                  🏗️ Civil Engineering: Structural design, detailing, and
-                  CAD-based drafting.
-                </li>
-                <li>
-                  💻 Web Development: Full-stack projects with HTML, CSS, JS,
-                  and React.
-                </li>
-                <li>
-                  🎨 Web & UI/UX Design: Creating engaging interfaces with
-                  Figma.
-                </li>
-                <li>
-                  📈 Trading: Specializing in Forex markets (primarily USD
-                  pairs), with a strong focus on strategy and journaling.
-                </li>
-                <li>
-                  🧠 AI Integration: Using AI tools for creative generation,
-                  automation, and research productivity.
-                </li>
-              </ul>
+    <!-- About Me Section -->
+    <section id="about" class="relative py-20 px-6 overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute top-10 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
+        <div class="absolute bottom-20 right-10 w-32 h-32 bg-accent/10 rounded-full blur-xl"></div>
+        <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-primary/5 rounded-full blur-lg"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <!-- Hero Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center mb-16 fade-in">
+                <div class="lg:col-span-2">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6 gradient-text futuristic-font">
+                        Stanley Rodney Nyakundi
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-6">
+                        Multidisciplinary Creator & Solutions-Driven Thinker
+                    </p>
+                    <p class="text-lg text-gray-300 mb-8 leading-relaxed">
+                        A Civil Engineering graduate with expertise in web development, AI integration, 
+                        and creative writing. Bridging technical precision with innovative design to 
+                        create impactful digital experiences.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#contact" class="bg-primary hover:bg-accent text-white font-medium py-3 px-6 rounded-full transition duration-300 glow">
+                            Get In Touch
+                        </a>
+                        <a href="Documents.html" class="glass text-white font-medium py-3 px-6 rounded-full transition duration-300 border border-primary/30 hover:border-primary/60">
+                            Download CV
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-primary to-accent rounded-2xl blur-lg opacity-30"></div>
+                        <div class="relative glass rounded-2xl p-8 text-center">
+                            <div class="w-32 h-32 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-6">
+                                <i class="fas fa-user-astronaut text-white text-5xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Quick Stats</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <div class="text-2xl font-bold text-primary">2+</div>
+                                    <div class="text-sm text-gray-400">Years Experience</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-primary">5+</div>
+                                    <div class="text-sm text-gray-400">Projects</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-primary">90%</div>
+                                    <div class="text-sm text-gray-400">Satisfaction</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-primary">10+</div>
+                                    <div class="text-sm text-gray-400">Skills</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="about-section">
-              <h3>Hobbies</h3>
-              <ul>
-                <li>
-                  🎮 Playing video games (strategy, story-rich, and competitive
-                  titles)
-                </li>
-                <li>
-                  🎬 Watching Chinese dramas and Donghua (Chinese animations)
-                </li>
-                <li>🖌️ Drawing and exploring various forms of visual art</li>
-                <li>
-                  ✈️ Traveling to new places and experiencing new cultures
-                </li>
-              </ul>
+            <!-- Core Skills -->
+            <div class="mb-16 fade-in" data-delay="100">
+                <h2 class="section-title text-white">
+                    Core <span class="gradient-text">Skills</span>
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="glass p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold mb-4 text-primary flex items-center">
+                            <i class="fas fa-laptop-code mr-2"></i> Technical Skills
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Web Development</span>
+                                    <span class="text-primary font-bold">75%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Civil Engineering</span>
+                                    <span class="text-primary font-bold">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">AI Integration</span>
+                                    <span class="text-primary font-bold">55%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">UI/UX Design</span>
+                                    <span class="text-primary font-bold">60%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="88"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold mb-4 text-primary flex items-center">
+                            <i class="fas fa-pen-fancy mr-2"></i> Creative Skills
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Creative Writing</span>
+                                    <span class="text-primary font-bold">82%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="92"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Storytelling</span>
+                                    <span class="text-primary font-bold">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="88"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Visual Design</span>
+                                    <span class="text-primary font-bold">70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="80"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Strategic Thinking</span>
+                                    <span class="text-primary font-bold">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="about-section">
-              <h3>Life Goals & Values</h3>
-              <ul>
-                <li>
-                  💰 Financial independence and sustainable wealth-building
-                </li>
-                <li>
-                  🌱 Lifelong learning through technology, finance, and design
-                </li>
-                <li>
-                  🌍 Exploring the world while building meaningful relationships
-                </li>
-                <li>
-                  📚 Teaching, mentoring, and giving back through skill sharing
-                </li>
-              </ul>
+            <!-- Interactive Interests Grid -->
+            <div class="mb-16 fade-in" data-delay="200">
+                <h2 class="section-title text-white">
+                    My <span class="gradient-text">Interests</span>
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="interactive-card glass p-6 rounded-2xl text-center">
+                        <div class="text-4xl text-primary mb-4">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Engineering</h3>
+                        <p class="text-gray-300 text-sm">
+                            Structural design, CAD drafting, and innovative engineering solutions.
+                        </p>
+                    </div>
+                    
+                    <div class="interactive-card glass p-6 rounded-2xl text-center">
+                        <div class="text-4xl text-primary mb-4">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Web Development</h3>
+                        <p class="text-gray-300 text-sm">
+                            Full-stack development with modern frameworks and technologies.
+                        </p>
+                    </div>
+                    
+                    <div class="interactive-card glass p-6 rounded-2xl text-center">
+                        <div class="text-4xl text-primary mb-4">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">AI Integration</h3>
+                        <p class="text-gray-300 text-sm">
+                            Leveraging AI tools for automation, creativity, and problem-solving.
+                        </p>
+                    </div>
+                    
+                    <div class="interactive-card glass p-6 rounded-2xl text-center">
+                        <div class="text-4xl text-primary mb-4">
+                            <i class="fas fa-feather-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Creative Writing</h3>
+                        <p class="text-gray-300 text-sm">
+                            Historical fantasy novels and immersive storytelling experiences.
+                        </p>
+                    </div>
+                </div>
             </div>
 
-            <div class="about-section">
-              <h3>Additional Traits</h3>
-              <ul>
-                <li>🧩 Detail-oriented with strong analytical thinking</li>
-                <li>
-                  🧠 Creative problem solver with structured workflow habits
-                </li>
-                <li>
-                  🚀 Self-motivated and adaptive in fast-changing environments
-                </li>
-                <li>
-                  🔗 Passionate about connecting ideas, people, and systems
-                </li>
-              </ul>
+            <!-- Education & Experience Timeline -->
+            <div class="mb-16 fade-in" data-delay="300">
+                <h2 class="section-title text-white">
+                    Journey & <span class="gradient-text">Experience</span>
+                </h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="glass p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold mb-6 text-primary flex items-center">
+                            <i class="fas fa-graduation-cap mr-2"></i> Education
+                        </h3>
+                        
+                        <div class="space-y-6">
+                            <div class="timeline-item">
+                                <div class="glass-dark p-4 rounded-xl">
+                                    <div class="text-primary font-bold mb-1">2020 - 2025</div>
+                                    <h4 class="font-bold text-lg">BSc Civil & Structural Engineering</h4>
+                                    <p class="text-gray-400">University of Eldoret, Kenya</p>
+                                    <p class="text-gray-300 mt-2">Specialized in structural analysis, design principles, and sustainable engineering practices.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="glass-dark p-4 rounded-xl">
+                                    <div class="text-primary font-bold mb-1">2024 - 2025</div>
+                                    <h4 class="font-bold text-lg">Web Development Certification</h4>
+                                    <p class="text-gray-400">Online Program</p>
+                                    <p class="text-gray-300 mt-2">Advanced front-end development with focus on modern JavaScript frameworks and responsive design.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold mb-6 text-primary flex items-center">
+                            <i class="fas fa-briefcase mr-2"></i> Professional Experience
+                        </h3>
+                        
+                        <div class="space-y-6">
+                            <div class="timeline-item">
+                                <div class="glass-dark p-4 rounded-xl">
+                                    <div class="text-primary font-bold mb-1">2024 - Present</div>
+                                    <h4 class="font-bold text-lg">Freelance Developer & Designer</h4>
+                                    <p class="text-gray-400">Remote</p>
+                                    <p class="text-gray-300 mt-2">Creating responsive websites, web applications, and digital solutions for diverse clients.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="glass-dark p-4 rounded-xl">
+                                    <div class="text-primary font-bold mb-1">2025 - </div>
+                                    <h4 class="font-bold text-lg">Engineering Intern</h4>
+                                    <p class="text-gray-400">Construction Firm</p>
+                                    <p class="text-gray-300 mt-2">Assisted in structural design, project management, and technical documentation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </section>
+
+            <!-- Hobbies & Personal Interests -->
+            <div class="mb-16 fade-in" data-delay="400">
+                <h2 class="section-title text-white">
+                    Beyond <span class="gradient-text">Work</span>
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="glass p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold mb-4 text-primary flex items-center">
+                            <i class="fas fa-gamepad mr-2"></i> Hobbies & Recreation
+                        </h3>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-gamepad text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Gaming</h4>
+                                    <p class="text-gray-400 text-sm">Strategy, story-rich, and competitive titles</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-film text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Chinese Media</h4>
+                                    <p class="text-gray-400 text-sm">Dramas and Donghua (Chinese animations)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-pencil-alt text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Drawing & Art</h4>
+                                    <p class="text-gray-400 text-sm">Exploring various forms of visual art</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-plane text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Travel</h4>
+                                    <p class="text-gray-400 text-sm">Exploring new places and cultures</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold mb-4 text-primary flex items-center">
+                            <i class="fas fa-bullseye mr-2"></i> Life Goals & Values
+                        </h3>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-chart-line text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Financial Independence</h4>
+                                    <p class="text-gray-400 text-sm">Sustainable wealth-building strategies</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-graduation-cap text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Lifelong Learning</h4>
+                                    <p class="text-gray-400 text-sm">Continuous growth through technology and design</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-globe text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Global Exploration</h4>
+                                    <p class="text-gray-400 text-sm">Building meaningful relationships worldwide</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-hands-helping text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Mentorship</h4>
+                                    <p class="text-gray-400 text-sm">Teaching and giving back through skill sharing</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+      
+    </section>
+      <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize particles background
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 50, density: { enable: true, value_area: 800 } },
+                color: { value: "#06b6d4" },
+                shape: { type: "circle" },
+                opacity: { value: 0.3, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#06b6d4",
+                    opacity: 0.1,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 1.5,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                }
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuButton.innerHTML = mobileMenu.classList.contains('hidden') 
+                ? '<i class="fas fa-bars"></i>' 
+                : '<i class="fas fa-times"></i>';
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('glass-dark');
+                navbar.classList.remove('glass');
+            } else {
+                navbar.classList.add('glass');
+                navbar.classList.remove('glass-dark');
+            }
+        });
+
+        // Scroll-triggered animations
+        function checkScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    const delay = element.getAttribute('data-delay') || 0;
+                    setTimeout(() => {
+                        element.classList.add('visible');
+                    }, delay * 100);
+                }
+            });
+        }
+
+        // Throttle scroll events for performance
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (!scrollTimeout) {
+                scrollTimeout = setTimeout(() => {
+                    scrollTimeout = null;
+                    checkScroll();
+                }, 10);
+            }
+        });
+
+        // Animate skill bars on scroll
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            
+            skillBars.forEach(bar => {
+                const rect = bar.getBoundingClientRect();
+                const isVisible = (rect.top <= window.innerHeight) && (rect.bottom >= 0);
+                
+                if (isVisible && !bar.classList.contains('animated')) {
+                    const width = bar.getAttribute('data-width');
+                    bar.style.width = width + '%';
+                    bar.classList.add('animated');
+                }
+            });
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            checkScroll();
+            animateSkillBars();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Interactive card effects
+        const interactiveCards = document.querySelectorAll('.interactive-card');
+        interactiveCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
     </main>
   </body>
 </html>
